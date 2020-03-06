@@ -7,24 +7,51 @@ class Node
 
 
 //LINK LIST CLASS
-class LinkList
+class LinkList<T>
 {
+	Node head = new Node();
+	//EMPTY LIST METHOD
 	Node emptyList()
 	{
-		Node head = new Node();
 		return head.next;
 	}
+	
+
+	//ADD METHOD
+	void add(String addWord)
+	{
+		Node tempHead = head;
+		tempHead.word = addWord;
+		tempHead.next = null;
+		if(head.next == null)
+		{
+			head.next = tempHead;
+		}
+		else
+		{
+			while(tempHead.next != null)
+			{
+				tempHead=tempHead.next;
+			}
+			tempHead.next = tempHead;
+		}
+	}
+	
+	
+	//SHOW METHOD
 }
 
 
+
 //UNORDERED LIST CLASS
-class UnOrderedListFeature
+public class UnOrderedList
 {
 	//MAIN FUNCTION
 	public static void main(String[] args)
 	{
-		LinkList linkListFeatures = new LinkList();
+		LinkList<String> linkListFeatures = new LinkList<String>();
 		Node returnedEmptyResult = linkListFeatures.emptyList();
 		System.out.println("Empty list : "+returnedEmptyResult);
+		linkListFeatures.add("hii");
 	}
 }
