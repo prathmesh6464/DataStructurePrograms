@@ -26,6 +26,7 @@ class LinkList<T>
 		addWordNewNode.word = word;
 		addWordNewNode.next = null;
 
+		
 		try 
 		{
 			if(head.next == null )
@@ -78,7 +79,6 @@ class LinkList<T>
 	//METHOD TO DELETE WORD
 	void deleteWord(String deleteWord)
 	{
-
 		if(head.next == null)
 		{
 			System.out.println("List is empty");
@@ -102,7 +102,6 @@ class LinkList<T>
 				System.out.println("Word deletion operation completed.");
 			}
 		}
-
 	}
 
 
@@ -193,18 +192,14 @@ public class UnOrderedList
 		}
 		bufferFileRead.close();
 
-
-		//SHOW LINK LIST CALLED METHOD
-		wordData.showWordList();
-		//TAKING INPUT METHOD CALLED
-		String wordToDelete=wordData.takeInput();
-		//DELETE WORD METHOD CALLED
-		wordData.deleteWord(wordToDelete);
-		//IS WORD PRESENT OR NOT METHOD CALLED
-		wordData.isWordPresent(wordToDelete);
-		//SAVE INTO SAME FILE METHOD CALLED
+		
+		wordData.showWordList();	
+		String wordToDelete=wordData.takeInput();	
+		wordData.deleteWord(wordToDelete);	
 		wordData.saveIntoSameFile();
-		//SHOW LINK LIST METHOD CALLED
+		wordData.showWordList();
+		wordData.isWordPresent(wordToDelete);	
+		wordData.saveIntoSameFile();
 		wordData.showWordList();
 	}
 }
