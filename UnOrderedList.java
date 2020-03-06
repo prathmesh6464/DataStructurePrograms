@@ -22,11 +22,7 @@ class LinkList<T>
 	Node head = new Node();
 	public void insertWord(String word)
 	{
-<<<<<<< HEAD
-		//VARIABLES OF NODE	
-=======
-		//VARIABLE
->>>>>>> 0ccc0978bc63cb586db6ef0ae0b548727f348b57
+		//VARIABLES OF NODE
 		Node addWordNewNode = new Node();
 		addWordNewNode.word = word;
 		addWordNewNode.next = null;
