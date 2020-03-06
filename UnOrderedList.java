@@ -3,6 +3,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.File;
 
 
 //CREATING NODE FOR LINK LIST
@@ -32,7 +35,6 @@ class LinkList<T>
 			else
 			{
 				Node tempHead = head;
-
 				while(tempHead.next != null)
 				{
 					tempHead = tempHead.next;
@@ -69,7 +71,7 @@ class LinkList<T>
 			}
 			catch(NullPointerException e) 
 			{
-				System.out.println("");
+				System.out.println("Word deletion operation completed.");
 			}
 		}
 	}
@@ -99,21 +101,46 @@ class LinkList<T>
 		System.out.println("Enter the word which you want to find and delete : ");
 		Scanner scannerObject = new Scanner(System.in);
 		String findWord = scannerObject.next();
-		return findWord;
+		return findWord;		
 	}
 	
+	
+	void saveIntoSameFile() throws IOException
+	{
+		FileWriter fileWriterObject  = new FileWriter("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempFile.txt",true);
+		BufferedWriter bufferWriterObject = new BufferedWriter(fileWriterObject);
+		try 
+		{
+			Node tempHead = head;
+			while(tempHead.next != null)
+			{
+				tempHead = tempHead.next;
+				bufferWriterObject.newLine();
+				System.out.println("Writing word data to file : "+tempHead.word);
+				bufferWriterObject.write(tempHead.word);
+			}
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("File write operation completed.");
+		}
+		bufferWriterObject.flush();
+		bufferWriterObject.close();
+		
+	}
 }
 
 
 public class UnOrderedList
 {
-	public static void main(String[] args) throws IOException,NullPointerException,FileNotFoundException
+	public static void main(String[] args) throws IOException,NullPointerException,FileNotFoundException,IOException
 	{
-		FileReader fileRead = new FileReader("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempFile.txt");
+		FileReader fileRead = new FileReader(new File("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempFile.txt"));
 		BufferedReader bufferFileRead = new BufferedReader(fileRead);
 		String line = bufferFileRead.readLine();
 		LinkList<String> wordData = new LinkList<String>();
 
+		
 		while(line != null) 
 		{
 			try
@@ -130,12 +157,14 @@ public class UnOrderedList
 				System.out.println("");
 			}
 		}
-
+		bufferFileRead.close();
+		
 
 		//SHOW LINK LIST CALLED METHOD OF LINKLIST
 		wordData.showWordList();
 		String wordToDelete=wordData.takeInput();
 		wordData.deleteWord(wordToDelete);
+		wordData.saveIntoSameFile();
 		wordData.showWordList();
 	}
 }
