@@ -26,7 +26,7 @@ class LinkList<T>
 		addWordNewNode.word = word;
 		addWordNewNode.next = null;
 
-		
+
 		try 
 		{
 			if(head.next == null )
@@ -76,15 +76,7 @@ class LinkList<T>
 		}
 	}
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
-=======
-	
->>>>>>> Stashed changes
-=======
-	
->>>>>>> Stashed changes
 	//METHOD TO DELETE WORD
 	void deleteWord(String deleteWord)
 	{
@@ -196,12 +188,12 @@ public class UnOrderedList
 			}
 			catch(NullPointerException e)
 			{
-				System.out.println("");
+				System.out.println("List endded");
 			}
 		}
 		bufferFileRead.close();
 
-		
+
 		wordData.showWordList();	
 		String wordToDelete=wordData.takeInput();	
 		wordData.deleteWord(wordToDelete);	
