@@ -1,3 +1,4 @@
+//NODE CLASS
 class Node
 {
 	String word;
@@ -5,6 +6,7 @@ class Node
 }
 
 
+//LINK LIST CLASS
 class LinkList
 {
 	Node emptyList()
@@ -15,8 +17,10 @@ class LinkList
 }
 
 
+//UNORDERED LIST CLASS
 class UnOrderedList
 {
+	//MAIN FUNCTION
 	public static void main(String[] args)
 	{
 		LinkList linkListFeatures = new LinkList();
