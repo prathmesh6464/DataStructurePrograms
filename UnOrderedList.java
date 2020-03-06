@@ -76,7 +76,11 @@ class LinkList<T>
 		}
 	}
 
+<<<<<<< Updated upstream
 
+=======
+	
+>>>>>>> Stashed changes
 	//METHOD TO DELETE WORD
 	void deleteWord(String deleteWord)
 	{
