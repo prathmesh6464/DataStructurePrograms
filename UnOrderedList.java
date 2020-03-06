@@ -49,8 +49,35 @@ class LinkList<T>
 	}
 
 
+	void isWordPresent(String findWord)
+	{
+		try 
+		{
+			int flag = 0;
+			Node tempHead = head;
+			while(tempHead.next != null)
+			{
+				tempHead = tempHead.next;
+				if(true == (tempHead.word).equals(findWord))
+				{
+					flag=1;
+				}			
+			}
+			if(flag == 0)
+			{
+				LinkList.this.insertWord(findWord);
+			}
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("All List Shown");
+		}
+	}
+	
+	
 	void deleteWord(String deleteWord)
 	{
+		
 		if(head.next == null)
 		{
 			System.out.println("List is empty");
@@ -59,38 +86,22 @@ class LinkList<T>
 		{
 			try
 			{	
-				int temp = 0;
 				Node prevTempHead = head;			
 				Node tempHead = head.next;
-
 				while(true != ((tempHead.word).equals(deleteWord)))
 				{
 					prevTempHead = tempHead;
 					tempHead = tempHead.next;
 				}
-				if(true == (tempHead.word).equals(deleteWord))
-				{
-					System.out.println("Added word into file : dsfdsfdsfdsfdsfdsfdsfdsfdsf");
-					temp=1;
-				}
-				if(temp == 0)
-				{
-					System.out.println("Added word into file : dsfdsfdsfdsfdsfdsfdsfdsfdsiiiiiiiiif");
-					this.insertWord(tempHead.word);
-					System.out.println("Added word into file : "+tempHead.word);
-				}
-				else
-				{
-					System.out.println("Added word into file : dsfdsfdsfdsfdsfdsfdsfdsfdsflllllllllllll");
-					System.out.println("Deleted word : "+tempHead.word);
-					prevTempHead.next=prevTempHead.next.next;
-				}
+				System.out.println("Deleted word : "+tempHead.word);
+				prevTempHead.next=prevTempHead.next.next;
 			}
 			catch(NullPointerException e) 
 			{
 				System.out.println("Word deletion operation completed.");
 			}
 		}
+		
 	}
 
 
@@ -103,7 +114,6 @@ class LinkList<T>
 			{
 				tempHead = tempHead.next;
 				System.out.println(tempHead.word);
-
 			}
 		}
 		catch(NullPointerException e)
@@ -143,8 +153,6 @@ class LinkList<T>
 		{
 			System.out.println("File write operation completed.");
 		}
-
-
 		bufferWriterObject.flush();
 		bufferWriterObject.close();		
 	}
@@ -184,6 +192,7 @@ public class UnOrderedList
 		wordData.showWordList();
 		String wordToDelete=wordData.takeInput();
 		wordData.deleteWord(wordToDelete);
+		wordData.isWordPresent(wordToDelete);
 		wordData.saveIntoSameFile();
 		wordData.showWordList();
 	}
