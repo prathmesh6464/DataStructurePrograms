@@ -48,7 +48,7 @@ class LinkList<T>
 		}
 	}
 
-	
+
 	void deleteWord(String deleteWord)
 	{
 		if(head.next == null)
@@ -59,15 +59,32 @@ class LinkList<T>
 		{
 			try
 			{	
-				Node prevtempHead = head;			
+				int temp = 0;
+				Node prevTempHead = head;			
 				Node tempHead = head.next;
+
 				while(true != ((tempHead.word).equals(deleteWord)))
 				{
-					prevtempHead = tempHead;
+					prevTempHead = tempHead;
 					tempHead = tempHead.next;
 				}
-				System.out.println("Deleted word : "+tempHead.word);
-				prevtempHead.next=prevtempHead.next.next;
+				if(true == (tempHead.word).equals(deleteWord))
+				{
+					System.out.println("Added word into file : dsfdsfdsfdsfdsfdsfdsfdsfdsf");
+					temp=1;
+				}
+				if(temp == 0)
+				{
+					System.out.println("Added word into file : dsfdsfdsfdsfdsfdsfdsfdsfdsiiiiiiiiif");
+					this.insertWord(tempHead.word);
+					System.out.println("Added word into file : "+tempHead.word);
+				}
+				else
+				{
+					System.out.println("Added word into file : dsfdsfdsfdsfdsfdsfdsfdsfdsflllllllllllll");
+					System.out.println("Deleted word : "+tempHead.word);
+					prevTempHead.next=prevTempHead.next.next;
+				}
 			}
 			catch(NullPointerException e) 
 			{
@@ -91,11 +108,11 @@ class LinkList<T>
 		}
 		catch(NullPointerException e)
 		{
-			System.out.println("");
+			System.out.println("All List Shown");
 		}
 	}
-	
-	
+
+
 	String takeInput()
 	{
 		System.out.println("Enter the word which you want to find and delete : ");
@@ -103,12 +120,14 @@ class LinkList<T>
 		String findWord = scannerObject.next();
 		return findWord;		
 	}
-	
-	
+
+
 	void saveIntoSameFile() throws IOException
 	{
 		FileWriter fileWriterObject  = new FileWriter("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempFile.txt",true);
 		BufferedWriter bufferWriterObject = new BufferedWriter(fileWriterObject);
+
+
 		try 
 		{
 			Node tempHead = head;
@@ -124,9 +143,10 @@ class LinkList<T>
 		{
 			System.out.println("File write operation completed.");
 		}
+
+
 		bufferWriterObject.flush();
-		bufferWriterObject.close();
-		
+		bufferWriterObject.close();		
 	}
 }
 
@@ -140,7 +160,7 @@ public class UnOrderedList
 		String line = bufferFileRead.readLine();
 		LinkList<String> wordData = new LinkList<String>();
 
-		
+
 		while(line != null) 
 		{
 			try
@@ -158,7 +178,7 @@ public class UnOrderedList
 			}
 		}
 		bufferFileRead.close();
-		
+
 
 		//SHOW LINK LIST CALLED METHOD OF LINKLIST
 		wordData.showWordList();
