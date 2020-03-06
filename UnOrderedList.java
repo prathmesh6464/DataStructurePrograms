@@ -8,6 +8,7 @@ class Node
 class LinkList
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	Node head = new Node();
 	public void insertWord(String word)
 	{
@@ -117,8 +118,9 @@ class LinkList
 	//METHOD OF TAKING INPUT
 	String takeInput()
 =======
-	Node emptyList()
+=======
 >>>>>>> Stashed changes
+	Node emptyList()
 	{
 		Node head = new Node();
 		return head.next;
