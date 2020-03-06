@@ -44,11 +44,12 @@ class LinkList<T>
 		}
 		catch(NullPointerException e)
 		{
-			System.out.println("");
+			System.out.println("List endded");
 		}
 	}
 
 
+	//METHOD TO CHECK WORD IS PRESENT OR NOT
 	void isWordPresent(String findWord)
 	{
 		try 
@@ -70,14 +71,15 @@ class LinkList<T>
 		}
 		catch(NullPointerException e)
 		{
-			System.out.println("All List Shown");
+			System.out.println("List endded");
 		}
 	}
-	
-	
+
+
+	//METHOD TO DELETE WORD
 	void deleteWord(String deleteWord)
 	{
-		
+
 		if(head.next == null)
 		{
 			System.out.println("List is empty");
@@ -101,10 +103,11 @@ class LinkList<T>
 				System.out.println("Word deletion operation completed.");
 			}
 		}
-		
+
 	}
 
 
+	//METHOD TO SHOW LIST
 	public void showWordList()
 	{
 		try 
@@ -118,11 +121,12 @@ class LinkList<T>
 		}
 		catch(NullPointerException e)
 		{
-			System.out.println("All List Shown");
+			System.out.println("List endded");
 		}
 	}
 
 
+	//METHOD OF TAKING INPUT
 	String takeInput()
 	{
 		System.out.println("Enter the word which you want to find and delete : ");
@@ -132,6 +136,7 @@ class LinkList<T>
 	}
 
 
+	//METHOD OF SAVING IN SAME FILE
 	void saveIntoSameFile() throws IOException
 	{
 		FileWriter fileWriterObject  = new FileWriter("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempFile.txt",true);
@@ -159,8 +164,10 @@ class LinkList<T>
 }
 
 
+//UNORDERED LIST CLASS
 public class UnOrderedList
-{
+{	
+	//MAIN METHOD
 	public static void main(String[] args) throws IOException,NullPointerException,FileNotFoundException,IOException
 	{
 		FileReader fileRead = new FileReader(new File("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempFile.txt"));
@@ -188,12 +195,17 @@ public class UnOrderedList
 		bufferFileRead.close();
 
 
-		//SHOW LINK LIST CALLED METHOD OF LINKLIST
+		//SHOW LINK LIST CALLED METHOD
 		wordData.showWordList();
+		//TAKING INPUT METHOD CALLED
 		String wordToDelete=wordData.takeInput();
+		//DELETE WORD METHOD CALLED
 		wordData.deleteWord(wordToDelete);
+		//IS WORD PRESENT OR NOT METHOD CALLED
 		wordData.isWordPresent(wordToDelete);
+		//SAVE INTO SAME FILE METHOD CALLED
 		wordData.saveIntoSameFile();
+		//SHOW LINK LIST METHOD CALLED
 		wordData.showWordList();
 	}
 }
