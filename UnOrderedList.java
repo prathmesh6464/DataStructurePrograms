@@ -48,7 +48,7 @@ class LinkList<T>
 		}
 	}
 
-	
+
 	//METHOD TO CHECK WORD IS PRESENT OR NOT
 	void isWordPresent(String findWord)
 	{
@@ -74,12 +74,11 @@ class LinkList<T>
 			System.out.println("List endded");
 		}
 	}
-	
-	
+
 	//METHOD TO DELETE WORD
 	void deleteWord(String deleteWord)
 	{
-		
+
 		if(head.next == null)
 		{
 			System.out.println("List is empty");
@@ -103,7 +102,7 @@ class LinkList<T>
 				System.out.println("Word deletion operation completed.");
 			}
 		}
-		
+
 	}
 
 
@@ -189,7 +188,7 @@ public class UnOrderedList
 			}
 			catch(NullPointerException e)
 			{
-				System.out.println("");
+				System.out.println("List endded");
 			}
 		}
 		bufferFileRead.close();
