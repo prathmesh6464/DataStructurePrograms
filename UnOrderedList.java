@@ -275,7 +275,7 @@ public class UnOrderedList
 		bufferFileRead.close();
 
 
-		//SEARCH METHOD CALLED		
-		wordData.search("Hii");
+		//SIZE METHOD CALLED		
+		System.out.println("Size of list is : "+wordData.size());
 	}
 }
