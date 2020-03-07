@@ -152,7 +152,7 @@ class LinkList<T>
 
 
 	//METHOD TO DELETE WORD
-	void remove(String remove)
+	void remove(String removeWord)
 	{
 		if(headNode.nextNode == null)
 		{
@@ -166,12 +166,13 @@ class LinkList<T>
 				Node temporaryHeadNode= headNode.nextNode;
 
 
-				while(true != ((temporaryHeadNode.word).equals(remove)))
+				while(true != ((temporaryHeadNode.word).equals(removeWord)))
 				{
 					previousTemporaryHeadNode = temporaryHeadNode;
 					temporaryHeadNode = temporaryHeadNode.nextNode;
 				}
 
+				
 				System.out.println("Deleted word : "+temporaryHeadNode.word);
 				previousTemporaryHeadNode.nextNode=previousTemporaryHeadNode.nextNode.nextNode;
 				size--;
@@ -312,7 +313,6 @@ class LinkList<T>
 		if(headNode.nextNode == null)
 		{
 			System.out.println("List is empty");
-			return "";
 		}
 		else
 		{	
@@ -328,52 +328,85 @@ class LinkList<T>
 
 			temparoryHead.nextNode = null;
 			size--;
-			return temparoryHead.word;
-		}
-	}
-}
+			return (temparoryHead.word);
+		}		
 
 
-//UNORDERED LIST CLASS
-public class UnOrderedList
-{	
-	//MAIN METHOD
-	public static void main(String[] args) throws IOException,NullPointerException,FileNotFoundException,IOException
-	{
-		FileReader fileRead = new FileReader(new File("C:\\Users\\King\\eclipse-workspace\\SnakeAndLadderProgram\\TempFile.txt"));
-		BufferedReader bufferFileRead = new BufferedReader(fileRead);
-		String line = bufferFileRead.readLine();
-		LinkList<String> wordData = new LinkList<String>();
 
-
-		while(line != null) 
+		//POP POSITION METHOD
+		String pop(int position)
 		{
-			try
+			if(headNode.nextNode == null)
 			{
-				String[] splitWords = line.split(" ");
-				for(String word : splitWords)
+				System.out.println("List is empty");
+			}
+			else
+			{	
+				int temparoryIter = 0;
+				Node temparoryHead = headNode;
+
+
+				for(temparoryIter=0; temparoryIter<size; temparoryIter++)
 				{
-					wordData.append(word);
+					if(temparoryIter == position)
+					{
+						temparoryHead = temparoryHead.nextNode;
+						this.remove(temparoryHead.word);
+						return temparoryHead.word;
+					}
+					temparoryHead = temparoryHead.nextNode;					
 				}
-				line = bufferFileRead.readLine();
+				size--;
 			}
-			catch(NullPointerException e)
-			{
-				System.out.println("List endded");
-			}
+			return null;		
 		}
-		bufferFileRead.close();
-
-
-		//POP METHOD CALLED
-		String returnedResultOfPop = wordData.pop();
-		String returnedResultOfPop2 = wordData.pop();
-		String returnedResultOfPop3 = wordData.pop();
-
-
-		//PRINTING POP RESULTS
-		System.out.println(returnedResultOfPop);
-		System.out.println(returnedResultOfPop2);
-		System.out.println(returnedResultOfPop3);
 	}
-}
+
+
+	//UNORDERED LIST CLASS
+	public class UnOrderedList
+	{	
+		//MAIN METHOD
+		public static void main(String[] args) throws IOException,NullPointerException,FileNotFoundException,IOException
+		{
+			FileReader fileRead = new FileReader(new File("C:\\Users\\King\\eclipse-workspace\\SnakeAndLadderProgram\\TempFile.txt"));
+			BufferedReader bufferFileRead = new BufferedReader(fileRead);
+			String line = bufferFileRead.readLine();
+			LinkList<String> wordData = new LinkList<String>();
+
+
+			while(line != null) 
+			{
+				try
+				{
+					String[] splitWords = line.split(" ");
+					for(String word : splitWords)
+					{
+						wordData.append(word);
+					}
+					line = bufferFileRead.readLine();
+				}
+				catch(NullPointerException e)
+				{
+					System.out.println("List endded");
+				}
+			}
+			bufferFileRead.close();
+
+
+			//POP POSITION METHOD CALLED
+			String returnedResultOfPop = wordData.pop(0);
+			String returnedResultOfPop2 = wordData.pop(1);
+			String returnedResultOfPop3 = wordData.pop(6);
+
+
+			//PRINTING POP POSITION RESULTS
+			System.out.println(returnedResultOfPop);
+			System.out.println(returnedResultOfPop2);
+			System.out.println(returnedResultOfPop3);
+			
+			
+			//DISPLAY LIST AFTER POP WITH POSITION
+			wordData.showWordList();
+		}
+	}
