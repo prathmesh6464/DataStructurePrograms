@@ -201,7 +201,7 @@ class LinkList<T>
 		}
 		else
 		{
-			System.out.println("List is empty");
+			System.out.println("List is Not empty");
 		}
 	}
 
@@ -275,7 +275,7 @@ public class UnOrderedList
 		bufferFileRead.close();
 
 
-		//SIZE METHOD CALLED		
-		System.out.println("Size of list is : "+wordData.size());
+		//SIZE METHOD CALLED
+		wordData.isEmpty();//SHOWN OUTPUT LIST IS NOT EMPTY
 	}
 }
