@@ -38,9 +38,9 @@ class LinkList<T>
 		newNodeWord.word = addWord;
 		newNodeWord.next = null;
 
-		if(head == null)
+		if(head.next == null)
 		{
-			head = newNodeWord;
+			head.next = newNodeWord;
 			size++;
 		}
 		else
@@ -48,6 +48,11 @@ class LinkList<T>
 			Node tempHead = head;
 			newNodeWord.next = head;
 			head = tempHead;
+			newNodeWord.next = head;
+			head = newNodeWord;
+
+			newNodeWord.next = head.next;
+			head.next = newNodeWord.next;
 			size++;
 		}
 	}
@@ -208,11 +213,13 @@ class LinkList<T>
 	}
 
 
+
 	//METHOD OF INDEX
 	int index(String findIndexOfWord)
 	{
 		int temp = 0;
-		Node tempHead = head;
+		Node tempHead = head.next;
+
 		while(tempHead != null)
 		{
 			if(findIndexOfWord.equals(tempHead.word))
@@ -295,7 +302,7 @@ public class UnOrderedList
 		}
 		bufferFileRead.close();
 
-
+		
 		//SIZE METHOD CALLED
 		int result=wordData.index("very");//SHOWN OUTPUT LIST IS NOT EMPTY
 		if(result == -1)
