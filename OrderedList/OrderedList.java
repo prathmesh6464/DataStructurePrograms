@@ -1,9 +1,16 @@
-package OrderedList;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.File;
 
-public class OrderedList 
+
+//CREATING NODE FOR LINK LIST
+class Node
 {
-	public static void main(String args[])
-	{
-		System.out.println("Welcome");
-	}
-}
+	String word;
+	Node nextNode = null;
+} 
