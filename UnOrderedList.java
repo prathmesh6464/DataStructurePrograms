@@ -12,47 +12,47 @@ import java.io.File;
 class Node
 {
 	String word;
-	Node next = null;
+	Node nextNode = null;
 } 
 
 
 //CREATING LINK LIST CLASS
 class LinkList<T>
 {
-	//HEAD NODE TYPE VAIABLE
-	Node head = new Node();
+	//headNode NODE TYPE VAIABLE
+	Node headNode = new Node();
 	int size = 0;
 
 
 	//EMPTY LIST METHOD
 	Node emptyList()
 	{
-		return head;
+		return headNode;
 	} 
 
 
 	//ADD METHOD
-	public void add(String addWord)
+	public void add(String addingWord)
 	{
 		Node newNodeWord = new Node();
-		newNodeWord.word = addWord;
-		newNodeWord.next = null;
+		newNodeWord.word = addingWord;
+		newNodeWord.nextNode = null;
 
-		if(head.next == null)
+		if(headNode.nextNode == null)
 		{
-			head.next = newNodeWord;
+			headNode.nextNode = newNodeWord;
 			size++;
 		}
 		else
 		{
-			Node tempHead = head;
-			newNodeWord.next = head;
-			head = tempHead;
-			newNodeWord.next = head;
-			head = newNodeWord;
+			Node temporaryHeadNode = headNode;
+			newNodeWord.nextNode = headNode;
+			headNode = temporaryHeadNode;
+			newNodeWord.nextNode = headNode;
+			headNode = newNodeWord;
 
-			newNodeWord.next = head.next;
-			head.next = newNodeWord.next;
+			newNodeWord.nextNode = headNode.nextNode;
+			headNode.nextNode = newNodeWord.nextNode;
 			size++;
 		}
 	}
@@ -62,26 +62,26 @@ class LinkList<T>
 	public void append(String word)
 	{
 		//VARIABLES OF NODE	
-		Node addWordNewNode = new Node();
-		addWordNewNode.word = word;
-		addWordNewNode.next = null;
+		Node addingWordNewNode = new Node();
+		addingWordNewNode.word = word;
+		addingWordNewNode.nextNode = null;
 
 
 		try 
 		{
-			if(head.next == null )
+			if(headNode.nextNode == null )
 			{
-				head.next = addWordNewNode;
+				headNode.nextNode = addingWordNewNode;
 				size++;
 			}
 			else
 			{
-				Node tempHead = head;
-				while(tempHead.next != null)
+				Node temporaryHeadNode = headNode;
+				while(temporaryHeadNode.nextNode != null)
 				{
-					tempHead = tempHead.next;
+					temporaryHeadNode = temporaryHeadNode.nextNode;
 				}
-				tempHead.next = addWordNewNode;
+				temporaryHeadNode.nextNode = addingWordNewNode;
 				size++;
 			}
 		}
@@ -97,17 +97,17 @@ class LinkList<T>
 	{
 		try 
 		{
-			int flag = 0;
-			Node tempHead = head;
-			while(tempHead.next != null)
+			int isMatches = 0;
+			Node temporaryHeadNode = headNode;
+			while(temporaryHeadNode.nextNode != null)
 			{
-				tempHead = tempHead.next;
-				if(true == (tempHead.word).equals(findWord))
+				temporaryHeadNode = temporaryHeadNode.nextNode;
+				if(true == (temporaryHeadNode.word).equals(findWord))
 				{
-					flag=1;
+					isMatches=1;
 				}			
 			}
-			if(flag == 0)
+			if(isMatches == 0)
 			{
 				LinkList.this.append(findWord);
 				size++;
@@ -124,18 +124,18 @@ class LinkList<T>
 	void search(String findWord)
 	{
 
-		Node tempHead = head;
-		int flag = 0;
-		while(tempHead.next != null)
+		Node temporaryHeadNode = headNode;
+		int isMatches = 0;
+		while(temporaryHeadNode.nextNode != null)
 		{
-			tempHead = tempHead.next;
-			if(true == (tempHead.word).equals(findWord))
+			temporaryHeadNode = temporaryHeadNode.nextNode;
+			if(true == (temporaryHeadNode.word).equals(findWord))
 			{
-				flag = 1;
+				isMatches = 1;
 				System.out.println(findWord+" Found in list");
 			}			
 		}
-		if(flag == 0)
+		if(isMatches == 0)
 		{
 			System.out.println(findWord+" Not Found in list");
 		}
@@ -146,7 +146,7 @@ class LinkList<T>
 	//METHOD TO DELETE WORD
 	void remove(String remove)
 	{
-		if(head.next == null)
+		if(headNode.nextNode == null)
 		{
 			System.out.println("List is empty");
 		}
@@ -154,15 +154,15 @@ class LinkList<T>
 		{
 			try
 			{	
-				Node prevTempHead = head;			
-				Node tempHead= head.next;
-				while(true != ((tempHead.word).equals(remove)))
+				Node previousTemporaryHeadNode = headNode;			
+				Node temporaryHeadNode= headNode.nextNode;
+				while(true != ((temporaryHeadNode.word).equals(remove)))
 				{
-					prevTempHead = tempHead;
-					tempHead = tempHead.next;
+					previousTemporaryHeadNode = temporaryHeadNode;
+					temporaryHeadNode = temporaryHeadNode.nextNode;
 				}
-				System.out.println("Deleted word : "+tempHead.word);
-				prevTempHead.next=prevTempHead.next.next;
+				System.out.println("Deleted word : "+temporaryHeadNode.word);
+				previousTemporaryHeadNode.nextNode=previousTemporaryHeadNode.nextNode.nextNode;
 				size--;
 			}
 			catch(NullPointerException e) 
@@ -178,11 +178,11 @@ class LinkList<T>
 	{
 		try 
 		{
-			Node tempHead = head;
-			while(tempHead.next != null)
+			Node temporaryHeadNode = headNode;
+			while(temporaryHeadNode.nextNode != null)
 			{
-				tempHead = tempHead.next;
-				System.out.println(tempHead.word);
+				temporaryHeadNode = temporaryHeadNode.nextNode;
+				System.out.println(temporaryHeadNode.word);
 			}
 		}
 		catch(NullPointerException e)
@@ -213,21 +213,20 @@ class LinkList<T>
 	}
 
 
-
 	//METHOD OF INDEX
 	int index(String findIndexOfWord)
 	{
 		int temp = 0;
-		Node tempHead = head.next;
+		Node temporaryHeadNode = headNode.nextNode;
 
-		while(tempHead != null)
+		while(temporaryHeadNode != null)
 		{
-			if(findIndexOfWord.equals(tempHead.word))
+			if(findIndexOfWord.equals(temporaryHeadNode.word))
 			{
 				return temp;
 			}	
-			System.out.println(tempHead.word);
-			tempHead = tempHead.next;
+			System.out.println(temporaryHeadNode.word);
+			temporaryHeadNode = temporaryHeadNode.nextNode;
 			temp++;
 		}
 		return -1;
@@ -239,11 +238,11 @@ class LinkList<T>
 	{
 		System.out.println("Enter the word which you want to find and delete : ");
 		Scanner scannerObject = new Scanner(System.in);
-		String findWord = scannerObject.next();
+		String findWord = scannerObject.nextNode();
 		return findWord;		
 	}
 
-	
+
 	//METHOD OF SAVING IN SAME FILE
 	void saveIntoSameFile() throws IOException
 	{
@@ -253,13 +252,13 @@ class LinkList<T>
 
 		try 
 		{
-			Node tempHead = head;
-			while(tempHead.next != null)
+			Node temporaryHeadNode = headNode;
+			while(temporaryHeadNode.nextNode != null)
 			{
-				tempHead = tempHead.next;
+				temporaryHeadNode = temporaryHeadNode.nextNode;
 				bufferWriterObject.newLine();
-				System.out.println("Writing word data to file : "+tempHead.word);
-				bufferWriterObject.write(tempHead.word);
+				System.out.println("Writing word data to file : "+temporaryHeadNode.word);
+				bufferWriterObject.write(temporaryHeadNode.word);
 			}
 		}
 		catch(NullPointerException e)
@@ -268,6 +267,23 @@ class LinkList<T>
 		}
 		bufferWriterObject.flush();
 		bufferWriterObject.close();		
+	}
+
+
+	//INSERT ITEM ON POSITION
+	void insert(int position,String addingWord)
+	{
+		Node newNodeWord = new Node();
+		newNodeWord.word = addingWord;
+		newNodeWord.nextNode = null;
+		
+		Node temporaryHeadNode = headNode;
+		for(int iter=0; iter<(position); iter++)
+		{
+			temporaryHeadNode = temporaryHeadNode.nextNode;
+		}
+		newNodeWord.nextNode = temporaryHeadNode.nextNode;
+		temporaryHeadNode.nextNode = newNodeWord;
 	}
 }
 
@@ -302,17 +318,9 @@ public class UnOrderedList
 		}
 		bufferFileRead.close();
 
-		
-		//SIZE METHOD CALLED
-		int result = wordData.index("very");
-		if(result == -1)
-		{
-			
-			System.out.println("Word is not in list");
-		}
-		else
-		{
-			System.out.println("Index : "+(result));
-		}
+
+		//INSERT METHOD CALLED
+		wordData.insert(1,"New Word");
+		wordData.showWordList();
 	}
 }
