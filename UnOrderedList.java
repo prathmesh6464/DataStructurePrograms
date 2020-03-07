@@ -164,25 +164,14 @@ class LinkList<T>
 			{	
 				Node previousTemporaryHeadNode = headNode;			
 				Node temporaryHeadNode= headNode.nextNode;
-<<<<<<< HEAD
-				
-				
-=======
 
 
->>>>>>> 2.Development
 				while(true != ((temporaryHeadNode.word).equals(remove)))
 				{
 					previousTemporaryHeadNode = temporaryHeadNode;
 					temporaryHeadNode = temporaryHeadNode.nextNode;
 				}
-<<<<<<< HEAD
-				
-				
-=======
 
-
->>>>>>> 2.Development
 				System.out.println("Deleted word : "+temporaryHeadNode.word);
 				previousTemporaryHeadNode.nextNode=previousTemporaryHeadNode.nextNode.nextNode;
 				size--;
@@ -201,25 +190,11 @@ class LinkList<T>
 		try 
 		{
 			Node temporaryHeadNode = headNode;
-<<<<<<< HEAD
-			
-			
-=======
-
-
->>>>>>> 2.Development
 			while(temporaryHeadNode.nextNode != null)
 			{
 				temporaryHeadNode = temporaryHeadNode.nextNode;
 				System.out.println(temporaryHeadNode.word);
 			}
-<<<<<<< HEAD
-			
-			
-=======
-
-
->>>>>>> 2.Development
 		}
 		catch(NullPointerException e)
 		{
@@ -252,14 +227,11 @@ class LinkList<T>
 	//METHOD OF INDEX
 	int index(String findIndexOfWord)
 	{
+		//VARIABLE
 		int temp = 0;
 		Node temporaryHeadNode = headNode.nextNode;
 
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> 2.Development
 		while(temporaryHeadNode != null)
 		{
 			if(findIndexOfWord.equals(temporaryHeadNode.word))
@@ -294,13 +266,6 @@ class LinkList<T>
 		try 
 		{
 			Node temporaryHeadNode = headNode;
-<<<<<<< HEAD
-			
-			
-=======
-
-
->>>>>>> 2.Development
 			while(temporaryHeadNode.nextNode != null)
 			{
 				temporaryHeadNode = temporaryHeadNode.nextNode;
@@ -313,13 +278,8 @@ class LinkList<T>
 		{
 			System.out.println("File write operation completed.");
 		}
-<<<<<<< HEAD
-		
-		
-=======
 
 
->>>>>>> 2.Development
 		bufferWriterObject.flush();
 		bufferWriterObject.close();		
 	}
@@ -333,24 +293,14 @@ class LinkList<T>
 		newNodeWord.word = addingWord;
 		newNodeWord.nextNode = null;
 		Node temporaryHeadNode = headNode;
-<<<<<<< HEAD
-		
-		
-=======
 
 
->>>>>>> 2.Development
 		for(int iter=0; iter<(position); iter++)
 		{
 			temporaryHeadNode = temporaryHeadNode.nextNode;
 		}
-<<<<<<< HEAD
-		
-		
-=======
 
 
->>>>>>> 2.Development
 		newNodeWord.nextNode = temporaryHeadNode.nextNode;
 		temporaryHeadNode.nextNode = newNodeWord;
 	}
@@ -368,10 +318,14 @@ class LinkList<T>
 		{	
 			int temparoryIter = 0;
 			Node temparoryHead = headNode;
+
+
 			for(temparoryIter=0; temparoryIter<size; temparoryIter++)
 			{
 				temparoryHead = temparoryHead.nextNode;
 			}
+
+
 			temparoryHead.nextNode = null;
 			size--;
 			return temparoryHead.word;
@@ -409,38 +363,17 @@ public class UnOrderedList
 			}
 		}
 		bufferFileRead.close();
-<<<<<<< HEAD
-		
-
-		//INSERT METHOD CALLED
-		wordData.insert(1,"New Word");
-		wordData.showWordList();
-
-		
-		//SIZE METHOD CALLED
-		int returnedResultOfIndex = wordData.index("very");
-		if(returnedResultOfIndex == -1)
-		{
-			
-			System.out.println("Word is not in list");
-		}
-		else
-		{
-			System.out.println("Index : "+(returnedResultOfIndex));
-		}
-=======
 
 
 		//POP METHOD CALLED
 		String returnedResultOfPop = wordData.pop();
 		String returnedResultOfPop2 = wordData.pop();
 		String returnedResultOfPop3 = wordData.pop();
-		
-		
+
+
 		//PRINTING POP RESULTS
 		System.out.println(returnedResultOfPop);
 		System.out.println(returnedResultOfPop2);
 		System.out.println(returnedResultOfPop3);
->>>>>>> 2.Development
 	}
 }
