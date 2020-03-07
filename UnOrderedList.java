@@ -37,6 +37,7 @@ class LinkList<T>
 		Node newNodeWord = new Node();
 		newNodeWord.word = addingWord;
 		newNodeWord.nextNode = null;
+		
 
 		if(headNode.nextNode == null)
 		{
@@ -123,9 +124,10 @@ class LinkList<T>
 	//METHOD TO SEARCH WORD
 	void search(String findWord)
 	{
-
 		Node temporaryHeadNode = headNode;
 		int isMatches = 0;
+		
+		
 		while(temporaryHeadNode.nextNode != null)
 		{
 			temporaryHeadNode = temporaryHeadNode.nextNode;
@@ -135,6 +137,8 @@ class LinkList<T>
 				System.out.println(findWord+" Found in list");
 			}			
 		}
+		
+		
 		if(isMatches == 0)
 		{
 			System.out.println(findWord+" Not Found in list");
@@ -238,7 +242,7 @@ class LinkList<T>
 	{
 		System.out.println("Enter the word which you want to find and delete : ");
 		Scanner scannerObject = new Scanner(System.in);
-		String findWord = scannerObject.nextNode();
+		String findWord = scannerObject.next();
 		return findWord;		
 	}
 
