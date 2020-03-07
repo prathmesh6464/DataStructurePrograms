@@ -3,6 +3,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+
+import org.graalvm.compiler.word.Word;
+
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -201,8 +204,33 @@ public class UnOrderedList
 	//MAIN METHOD
 	public static void main(String[] args) throws IOException,NullPointerException,FileNotFoundException,IOException
 	{
-		LinkList<String> featuresOfLinkList = new LinkList<String>();
-		Node r = featuresOfLinkList.emptyList();
-		System.out.println("Empty list : "+r.next);
+		FileReader fileRead = new FileReader(new File("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempFile.txt"));
+		BufferedReader bufferFileRead = new BufferedReader(fileRead);
+		String line = bufferFileRead.readLine();
+		LinkList<String> wordData = new LinkList<String>();
+
+
+		while(line != null) 
+		{
+			try
+			{
+				String[] splitWords = line.split(" ");
+				for(String word : splitWords)
+				{
+					wordData.append(word);
+				}
+				line = bufferFileRead.readLine();
+			}
+			catch(NullPointerException e)
+			{
+				System.out.println("List endded");
+			}
+		}
+		bufferFileRead.close();
+
+		
+		//APPEND METHOD CALLED
+		wordData.append("New Word");
+		wordData.showWordList();	
 	}
 }
