@@ -36,6 +36,7 @@ class LinkList<T>
 	{
 		Node newNodeWord = new Node();
 		newNodeWord.word = addWord;
+		newNodeWord.next = null;
 
 		if(head == null)
 		{
@@ -44,8 +45,9 @@ class LinkList<T>
 		}
 		else
 		{
+			Node tempHead = head;
 			newNodeWord.next = head;
-			head = newNodeWord;
+			head = tempHead;
 			size++;
 		}
 	}
@@ -206,6 +208,25 @@ class LinkList<T>
 	}
 
 
+	//METHOD OF INDEX
+	int index(String findIndexOfWord)
+	{
+		int temp = 0;
+		Node tempHead = head;
+		while(tempHead != null)
+		{
+			if(findIndexOfWord.equals(tempHead.word))
+			{
+				return temp;
+			}	
+			System.out.println(tempHead.word);
+			tempHead = tempHead.next;
+			temp++;
+		}
+		return -1;
+	}
+
+
 	//METHOD OF TAKING INPUT
 	String takeInput()
 	{
@@ -215,7 +236,7 @@ class LinkList<T>
 		return findWord;		
 	}
 
-
+	
 	//METHOD OF SAVING IN SAME FILE
 	void saveIntoSameFile() throws IOException
 	{
@@ -276,6 +297,16 @@ public class UnOrderedList
 
 
 		//SIZE METHOD CALLED
-		wordData.isEmpty();//SHOWN OUTPUT LIST IS NOT EMPTY
+		int result=wordData.index("very");//SHOWN OUTPUT LIST IS NOT EMPTY
+		if(result == -1)
+		{
+			
+			System.out.println("Word is not in list");
+		}
+		else
+		{
+			System.out.println("Index : "+(result));
+		}
+
 	}
 }
