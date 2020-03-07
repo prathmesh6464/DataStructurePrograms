@@ -14,3 +14,18 @@ class Node
 	String word;
 	Node nextNode = null;
 } 
+
+
+//CREATING LINK LIST CLASS
+class LinkList<T>
+{
+	//headNode NODE TYPE VAIABLE
+	Node headNode = new Node();
+
+	
+	//EMPTY LIST METHOD
+	Node emptyList()
+	{
+		return headNode;
+	} 
+}
