@@ -3,9 +3,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
-
-import org.graalvm.compiler.word.Word;
-
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +13,7 @@ class Node
 {
 	String word;
 	Node next = null;
+	int size = 0;
 } 
 
 
@@ -38,15 +36,13 @@ class LinkList<T>
 	{
 		Node newNodeWord = new Node();
 		newNodeWord.word = addWord;
-		newNodeWord.next = null;
-
+		
 		if(head == null)
 		{
 			head = newNodeWord;
 		}
 		else
 		{
-			//Node tempHead = head;
 			newNodeWord.next = head;
 			head = newNodeWord;
 		}
@@ -124,7 +120,7 @@ class LinkList<T>
 			try
 			{	
 				Node prevTempHead = head;			
-				Node tempHead = head.next;
+				Node tempHead= head.next;
 				while(true != ((tempHead.word).equals(remove)))
 				{
 					prevTempHead = tempHead;
@@ -229,8 +225,9 @@ public class UnOrderedList
 		bufferFileRead.close();
 
 		
-		//APPEND METHOD CALLED
-		wordData.append("New Word");
+		//ADD METHOD CALLED
+		wordData.add("New Word");
+		wordData.add("New Word");
 		wordData.showWordList();	
 	}
 }
