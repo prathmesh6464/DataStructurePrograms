@@ -164,11 +164,15 @@ class LinkList<T>
 			{	
 				Node previousTemporaryHeadNode = headNode;			
 				Node temporaryHeadNode= headNode.nextNode;
+				
+				
 				while(true != ((temporaryHeadNode.word).equals(remove)))
 				{
 					previousTemporaryHeadNode = temporaryHeadNode;
 					temporaryHeadNode = temporaryHeadNode.nextNode;
 				}
+				
+				
 				System.out.println("Deleted word : "+temporaryHeadNode.word);
 				previousTemporaryHeadNode.nextNode=previousTemporaryHeadNode.nextNode.nextNode;
 				size--;
@@ -187,11 +191,15 @@ class LinkList<T>
 		try 
 		{
 			Node temporaryHeadNode = headNode;
+			
+			
 			while(temporaryHeadNode.nextNode != null)
 			{
 				temporaryHeadNode = temporaryHeadNode.nextNode;
 				System.out.println(temporaryHeadNode.word);
 			}
+			
+			
 		}
 		catch(NullPointerException e)
 		{
@@ -227,6 +235,7 @@ class LinkList<T>
 		int temp = 0;
 		Node temporaryHeadNode = headNode.nextNode;
 
+		
 		while(temporaryHeadNode != null)
 		{
 			if(findIndexOfWord.equals(temporaryHeadNode.word))
@@ -261,6 +270,8 @@ class LinkList<T>
 		try 
 		{
 			Node temporaryHeadNode = headNode;
+			
+			
 			while(temporaryHeadNode.nextNode != null)
 			{
 				temporaryHeadNode = temporaryHeadNode.nextNode;
@@ -273,6 +284,8 @@ class LinkList<T>
 		{
 			System.out.println("File write operation completed.");
 		}
+		
+		
 		bufferWriterObject.flush();
 		bufferWriterObject.close();		
 	}
@@ -281,15 +294,19 @@ class LinkList<T>
 	//INSERT ITEM ON POSITION
 	void insert(int position,String addingWord)
 	{
+		//VARIABLES
 		Node newNodeWord = new Node();
 		newNodeWord.word = addingWord;
 		newNodeWord.nextNode = null;
-		
 		Node temporaryHeadNode = headNode;
+		
+		
 		for(int iter=0; iter<(position); iter++)
 		{
 			temporaryHeadNode = temporaryHeadNode.nextNode;
 		}
+		
+		
 		newNodeWord.nextNode = temporaryHeadNode.nextNode;
 		temporaryHeadNode.nextNode = newNodeWord;
 	}
@@ -302,7 +319,7 @@ public class UnOrderedList
 	//MAIN METHOD
 	public static void main(String[] args) throws IOException,NullPointerException,FileNotFoundException,IOException
 	{
-		FileReader fileRead = new FileReader(new File("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempFile.txt"));
+		FileReader fileRead = new FileReader(new File("C:\\Users\\King\\eclipse-workspace\\SnakeAndLadderProgram\\TempFile.txt"));
 		BufferedReader bufferFileRead = new BufferedReader(fileRead);
 		String line = bufferFileRead.readLine();
 		LinkList<String> wordData = new LinkList<String>();
@@ -325,25 +342,23 @@ public class UnOrderedList
 			}
 		}
 		bufferFileRead.close();
-
-<<<<<<< HEAD
+		
 
 		//INSERT METHOD CALLED
 		wordData.insert(1,"New Word");
 		wordData.showWordList();
-=======
+
 		
 		//SIZE METHOD CALLED
-		int result = wordData.index("very");
-		if(result == -1)
+		int returnedResultOfIndex = wordData.index("very");
+		if(returnedResultOfIndex == -1)
 		{
 			
 			System.out.println("Word is not in list");
 		}
 		else
 		{
-			System.out.println("Index : "+(result));
+			System.out.println("Index : "+(returnedResultOfIndex));
 		}
->>>>>>> 07d597f77a14049f9fc38549d56b015f0f259701
 	}
 }
