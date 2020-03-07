@@ -23,7 +23,7 @@ class LinkList<T>
 	//HEAD NODE TYPE VAIABLE
 	Node head = new Node();
 
-	
+
 	//EMPTY LIST METHOD
 	Node emptyList()
 	{
@@ -36,7 +36,7 @@ class LinkList<T>
 	{
 		Node newNodeWord = new Node();
 		newNodeWord.word = addWord;
-		
+
 		if(head == null)
 		{
 			head = newNodeWord;
@@ -105,6 +105,29 @@ class LinkList<T>
 		{
 			System.out.println("List endded");
 		}
+	}
+
+
+	//METHOD TO SEARCH WORCH
+	void search(String findWord)
+	{
+
+		Node tempHead = head;
+		int flag = 0;
+		while(tempHead.next != null)
+		{
+			tempHead = tempHead.next;
+			if(true == (tempHead.word).equals(findWord))
+			{
+				flag = 1;
+				System.out.println(findWord+" Found in list");
+			}			
+		}
+		if(flag == 0)
+		{
+			System.out.println(findWord+" Not Found in list");
+		}
+
 	}
 
 
@@ -224,9 +247,9 @@ public class UnOrderedList
 		}
 		bufferFileRead.close();
 
-		
+
 		//DELETE METHOD CALLED
-		wordData.remove("Hi");
-		wordData.showWordList();	
+		wordData.showWordList();
+		wordData.search("Hii");
 	}
 }
