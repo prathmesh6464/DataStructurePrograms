@@ -326,9 +326,24 @@ public class UnOrderedList
 		}
 		bufferFileRead.close();
 
+<<<<<<< HEAD
 
 		//INSERT METHOD CALLED
 		wordData.insert(1,"New Word");
 		wordData.showWordList();
+=======
+		
+		//SIZE METHOD CALLED
+		int result = wordData.index("very");
+		if(result == -1)
+		{
+			
+			System.out.println("Word is not in list");
+		}
+		else
+		{
+			System.out.println("Index : "+(result));
+		}
+>>>>>>> 07d597f77a14049f9fc38549d56b015f0f259701
 	}
 }
