@@ -13,7 +13,6 @@ class Node
 {
 	String word;
 	Node next = null;
-	int size = 0;
 } 
 
 
@@ -22,6 +21,7 @@ class LinkList<T>
 {
 	//HEAD NODE TYPE VAIABLE
 	Node head = new Node();
+	int size = 0;
 
 
 	//EMPTY LIST METHOD
@@ -40,11 +40,13 @@ class LinkList<T>
 		if(head == null)
 		{
 			head = newNodeWord;
+			size++;
 		}
 		else
 		{
 			newNodeWord.next = head;
 			head = newNodeWord;
+			size++;
 		}
 	}
 
@@ -63,6 +65,7 @@ class LinkList<T>
 			if(head.next == null )
 			{
 				head.next = addWordNewNode;
+				size++;
 			}
 			else
 			{
@@ -72,6 +75,7 @@ class LinkList<T>
 					tempHead = tempHead.next;
 				}
 				tempHead.next = addWordNewNode;
+				size++;
 			}
 		}
 		catch(NullPointerException e)
@@ -99,6 +103,7 @@ class LinkList<T>
 			if(flag == 0)
 			{
 				LinkList.this.append(findWord);
+				size++;
 			}
 		}
 		catch(NullPointerException e)
@@ -151,6 +156,7 @@ class LinkList<T>
 				}
 				System.out.println("Deleted word : "+tempHead.word);
 				prevTempHead.next=prevTempHead.next.next;
+				size--;
 			}
 			catch(NullPointerException e) 
 			{
@@ -175,6 +181,27 @@ class LinkList<T>
 		catch(NullPointerException e)
 		{
 			System.out.println("List endded");
+		}
+	}
+
+
+	//METHOD OF SIZE
+	int size()
+	{
+		return size;
+	}
+
+
+	//METHOD OF IS LIST EMPTY OR NOT
+	void isEmpty()
+	{
+		if(size == 0)
+		{
+			System.out.println("List is empty");
+		}
+		else
+		{
+			System.out.println("List is empty");
 		}
 	}
 
@@ -248,8 +275,7 @@ public class UnOrderedList
 		bufferFileRead.close();
 
 
-		//DELETE METHOD CALLED
-		wordData.showWordList();
+		//SEARCH METHOD CALLED		
 		wordData.search("Hii");
 	}
 }
