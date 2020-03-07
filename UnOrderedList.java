@@ -225,9 +225,8 @@ public class UnOrderedList
 		bufferFileRead.close();
 
 		
-		//ADD METHOD CALLED
-		wordData.add("New Word");
-		wordData.add("New Word");
+		//DELETE METHOD CALLED
+		wordData.remove("Hi");
 		wordData.showWordList();	
 	}
 }
