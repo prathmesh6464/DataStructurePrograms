@@ -120,7 +120,7 @@ class LinkList<T>
 	}
 
 
-	//METHOD TO SEARCH WORCH
+	//METHOD TO SEARCH WORD
 	void search(String findWord)
 	{
 
@@ -304,7 +304,7 @@ public class UnOrderedList
 
 		
 		//SIZE METHOD CALLED
-		int result=wordData.index("very");//SHOWN OUTPUT LIST IS NOT EMPTY
+		int result = wordData.index("very");
 		if(result == -1)
 		{
 			
@@ -314,6 +314,5 @@ public class UnOrderedList
 		{
 			System.out.println("Index : "+(result));
 		}
-
 	}
 }
