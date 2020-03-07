@@ -100,6 +100,8 @@ class LinkList<T>
 		{
 			int isMatches = 0;
 			Node temporaryHeadNode = headNode;
+			
+			
 			while(temporaryHeadNode.nextNode != null)
 			{
 				temporaryHeadNode = temporaryHeadNode.nextNode;
@@ -108,11 +110,13 @@ class LinkList<T>
 					isMatches=1;
 				}			
 			}
+			
+			
 			if(isMatches == 0)
 			{
 				LinkList.this.append(findWord);
 				size++;
-			}
+			}			
 		}
 		catch(NullPointerException e)
 		{
