@@ -30,30 +30,24 @@ class LinkList<T>
 		return headNode;
 	} 
 
-
+	
 	//ADD METHOD
-	public void add(String addingWord)
+	public void add(String addWord)
 	{
+		//VARIABLES
 		Node newNodeWord = new Node();
-		newNodeWord.word = addingWord;
-		newNodeWord.nextNode = null;
-
-
+		newNodeWord.word = addWord;
+		
+		
 		if(headNode.nextNode == null)
 		{
-			headNode.nextNode = newNodeWord;
+			headNode.nextNode = newNodeWord.nextNode;
 			size++;
 		}
 		else
 		{
-			Node temporaryHeadNode = headNode;
-			newNodeWord.nextNode = headNode;
-			headNode = temporaryHeadNode;
-			newNodeWord.nextNode = headNode;
-			headNode = newNodeWord;
-
 			newNodeWord.nextNode = headNode.nextNode;
-			headNode.nextNode = newNodeWord.nextNode;
+			headNode.nextNode = newNodeWord;
 			size++;
 		}
 	}
@@ -98,6 +92,7 @@ class LinkList<T>
 	{
 		try 
 		{
+			//VARIABLES
 			int isMatches = 0;
 			Node temporaryHeadNode = headNode;
 
@@ -111,7 +106,7 @@ class LinkList<T>
 				}			
 			}
 
-
+			
 			if(isMatches == 0)
 			{
 				LinkList.this.append(findWord);
@@ -128,6 +123,7 @@ class LinkList<T>
 	//METHOD TO SEARCH WORD
 	void search(String findWord)
 	{
+		//VARIABLES
 		Node temporaryHeadNode = headNode;
 		int isMatches = 0;
 
@@ -147,7 +143,6 @@ class LinkList<T>
 		{
 			System.out.println(findWord+" Not Found in list");
 		}
-
 	}
 
 
@@ -162,6 +157,7 @@ class LinkList<T>
 		{
 			try
 			{	
+				//VARIABLES
 				Node previousTemporaryHeadNode = headNode;			
 				Node temporaryHeadNode= headNode.nextNode;
 
@@ -190,7 +186,10 @@ class LinkList<T>
 	{
 		try 
 		{
+			//VARIABLES
 			Node temporaryHeadNode = headNode;
+			
+			
 			while(temporaryHeadNode.nextNode != null)
 			{
 				temporaryHeadNode = temporaryHeadNode.nextNode;
@@ -304,6 +303,7 @@ class LinkList<T>
 
 		newNodeWord.nextNode = temporaryHeadNode.nextNode;
 		temporaryHeadNode.nextNode = newNodeWord;
+		size++;
 	}
 
 
@@ -328,7 +328,7 @@ class LinkList<T>
 
 			temparoryHead.nextNode = null;
 			size--;
-			return (temparoryHead.word);
+			return temparoryHead.word;
 		}		
 
 
@@ -358,7 +358,7 @@ class LinkList<T>
 				}
 				size--;
 			}
-			return null;		
+			return null;	
 		}
 	}
 
@@ -393,20 +393,9 @@ class LinkList<T>
 			}
 			bufferFileRead.close();
 
-
-			//POP POSITION METHOD CALLED
-			String returnedResultOfPop = wordData.pop(0);
-			String returnedResultOfPop2 = wordData.pop(1);
-			String returnedResultOfPop3 = wordData.pop(6);
-
-
-			//PRINTING POP POSITION RESULTS
-			System.out.println(returnedResultOfPop);
-			System.out.println(returnedResultOfPop2);
-			System.out.println(returnedResultOfPop3);
-			
-			
-			//DISPLAY LIST AFTER POP WITH POSITION
+	
+			//DISPLAY LIST AFTER ADD METHOD CALLED
+			wordData.add("New Word");
 			wordData.showWordList();
 		}
 	}
