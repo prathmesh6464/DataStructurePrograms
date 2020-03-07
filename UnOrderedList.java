@@ -37,15 +37,20 @@ class LinkList<T>
 		Node newNodeWord = new Node();
 		newNodeWord.word = addWord;
 
-		if(head == null)
+		if(head.next == null)
 		{
-			head = newNodeWord;
+			head.next = newNodeWord;
 			size++;
 		}
 		else
 		{
+<<<<<<< Updated upstream
 			newNodeWord.next = head;
 			head = newNodeWord;
+=======
+			newNodeWord.next = head.next;
+			head.next = newNodeWord.next;
+>>>>>>> Stashed changes
 			size++;
 		}
 	}
@@ -206,6 +211,28 @@ class LinkList<T>
 	}
 
 
+<<<<<<< Updated upstream
+=======
+	//METHOD OF INDEX
+	int index(String findIndexOfWord)
+	{
+		int temp = 0;
+		Node tempHead = head.next;
+		while(tempHead != null)
+		{
+			if(findIndexOfWord.equals(tempHead.word))
+			{
+				return temp;
+			}	
+			System.out.println(tempHead.word);
+			tempHead = tempHead.next;
+			temp++;
+		}
+		return -1;
+	}
+
+
+>>>>>>> Stashed changes
 	//METHOD OF TAKING INPUT
 	String takeInput()
 	{
@@ -274,7 +301,7 @@ public class UnOrderedList
 		}
 		bufferFileRead.close();
 
-
+		
 		//SIZE METHOD CALLED
 		wordData.isEmpty();//SHOWN OUTPUT LIST IS NOT EMPTY
 	}
