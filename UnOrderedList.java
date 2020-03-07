@@ -1,57 +1,90 @@
-//NODE CLASS
+//CLASS NODE
 class Node
 {
 	String word;
-	Node next=null;
+	Node next;
 }
 
 
-//LINK LIST CLASS
+//CLASS LINK LIST
 class LinkList<T>
 {
 	Node head = new Node();
+	
+	
 	//EMPTY LIST METHOD
 	Node emptyList()
 	{
-		return head.next;
-	}
+		return head;
+	} 
 	
-
+	
 	//ADD METHOD
-	void add(String addWord)
+	public void add(String addWord)
 	{
-		Node tempHead = head;
-		tempHead.word = addWord;
-		tempHead.next = null;
-		if(head.next == null)
+		Node newNodeWord = new Node();
+		newNodeWord.word = addWord;
+		newNodeWord.next = null;
+		
+		if(head == null)
 		{
-			head.next = tempHead;
+			head = newNodeWord;
 		}
 		else
 		{
-			while(tempHead.next != null)
-			{
-				tempHead=tempHead.next;
-			}
-			tempHead.next = tempHead;
+			Node tempHead = head;
+			newNodeWord.next = head;
+			head = newNodeWord;
 		}
 	}
 	
 	
-	//SHOW METHOD
+	//APPEND METHOD
+	public void append(String addWord)
+	{
+		Node newNodeOfWord = new Node();
+		newNodeOfWord.word = addWord;
+		newNodeOfWord.next = null;
+		
+		if(head == null)
+		{
+			head = newNodeOfWord;
+		}
+		else
+		{
+			Node tempHead = head;
+			while(tempHead.next != null)
+			{
+				tempHead = tempHead.next;
+			}
+			tempHead.next = newNodeOfWord;
+		}
+	}	
+	
+	
+	//SHOW LINK LIST
+	void showLinkList()
+	{
+		Node tempHead = head;
+		while(tempHead != null)
+		{
+			System.out.println("Link list data : "+tempHead.word);
+			tempHead = tempHead.next;
+		}
+	}	
 }
 
-
-
-//UNORDERED LIST CLASS
 public class UnOrderedList
 {
-	//MAIN FUNCTION
-	public static void main(String[] args)
+	public static void main(String args[])
 	{
-		LinkList<String> linkListFeatures = new LinkList<String>();
-		Node returnedEmptyResult = linkListFeatures.emptyList();
-		System.out.println("Empty list : "+returnedEmptyResult);
-		linkListFeatures.add("hii");
+		LinkList<String> featuresOfLinkList = new LinkList<String>();
+		Node r = featuresOfLinkList.emptyList();
+		System.out.println("Empty list : "+r.next);
+		featuresOfLinkList.append("abc");
+		featuresOfLinkList.append("hii");
+		featuresOfLinkList.append("abcx");
+		featuresOfLinkList.add("dsfdsfdsf");
+		featuresOfLinkList.showLinkList();
 	}
 }
