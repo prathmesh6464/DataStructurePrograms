@@ -26,7 +26,7 @@ class LinkList<T>
 
 
 	//EMPTY LIST METHOD
-	Node emptyList()
+	Node emptyOrderedList()
 	{
 		return headNode;
 	} 
@@ -265,53 +265,51 @@ class LinkList<T>
 		String[] arrayForSortingWords = new String[size];
 
 
-		try 
+		//VARIABLES
+		Node temporaryHeadNode2 = headNode;
+		int arrayIndex = 0;
+
+
+		//ADDING LIST'S WORDS INTO ARRAY
+		while(temporaryHeadNode2.nextNode != null)
+		{				
+			temporaryHeadNode2 = temporaryHeadNode2.nextNode;
+			arrayForSortingWords[arrayIndex] = temporaryHeadNode2.word;				
+			arrayIndex++;
+		}
+
+
+		//SORTING ARRAY AND ADDING INTO FILE
+		for(int arrayIndex2=0; arrayIndex2<arrayForSortingWords.length; arrayIndex2++)
 		{
-			Node temporaryHeadNode2 = headNode;
-			int arrayIndex = 0;
-			while(temporaryHeadNode2.nextNode != null)
-			{				
-				temporaryHeadNode2 = temporaryHeadNode2.nextNode;
-				arrayForSortingWords[arrayIndex] = temporaryHeadNode2.word;				
-				System.out.println("Writing word data to Array : "+arrayForSortingWords[arrayIndex]);	
-				arrayIndex++;
-			}
-
-
-			for(int arrayIndex2=0; arrayIndex2<arrayForSortingWords.length; arrayIndex2++)
+			for(int arrayIndex3=arrayIndex2+1; arrayIndex3<arrayForSortingWords.length; arrayIndex3++)
 			{
-				for(int arrayIndex3=arrayIndex2+1; arrayIndex3<arrayForSortingWords.length; arrayIndex3++)
+				if(0 < (arrayForSortingWords[arrayIndex2]).compareTo(arrayForSortingWords[arrayIndex3]))
 				{
-					if(0 < (arrayForSortingWords[arrayIndex2]).compareTo(arrayForSortingWords[arrayIndex3]))
-					{
-						String temparorySwapVairable = arrayForSortingWords[arrayIndex2];
-						arrayForSortingWords[arrayIndex2] = arrayForSortingWords[arrayIndex3];
-						arrayForSortingWords[arrayIndex3] = temparorySwapVairable;		
-						System.out.println("Writing word data to Array sf: "+arrayForSortingWords[arrayIndex2]);	
-					}						
-				}
-			}
-			
-			for(int index=0; index<size; index++)
-			{
-				bufferWriterObject.newLine();
-				System.out.println("Writing word data to Array xxx: "+arrayForSortingWords[index]);	
-				bufferWriterObject.write(arrayForSortingWords[index]);
+					String temparorySwapVairable = arrayForSortingWords[arrayIndex2];
+					arrayForSortingWords[arrayIndex2] = arrayForSortingWords[arrayIndex3];
+					arrayForSortingWords[arrayIndex3] = temparorySwapVairable;		
+				}						
 			}
 		}
-		catch(NullPointerException e)
+
+
+		//WRITING SORTED ARRAY INTO FILE
+		for(int index=0; index<size; index++)
 		{
-			System.out.println("File write operation completed.");
+			bufferWriterObject.newLine();
+			bufferWriterObject.write(arrayForSortingWords[index]);
 		}
 
-
+		
+		//BUFFERWRITER FLUSH AND THEN CLOSED
 		bufferWriterObject.flush();
 		bufferWriterObject.close();		
 	}
 
 
-	private boolean stringCompare(String string, String string2) {
-		// TODO Auto-generated method stub
+	boolean stringCompare(String string, String string2) 
+	{
 		return false;
 	}
 
@@ -348,6 +346,7 @@ class LinkList<T>
 		}
 		else
 		{	
+			//VARIABLES
 			int temparoryIter = 0;
 			Node temparoryHead = headNode;
 
@@ -365,8 +364,6 @@ class LinkList<T>
 	}		
 
 
-
-
 	//POP POSITION METHOD
 	String pop(int position)
 	{
@@ -376,6 +373,7 @@ class LinkList<T>
 		}
 		else
 		{	
+			//VARIABLES
 			int temporaryIter = 0;
 			Node temporaryHead = headNode;
 
@@ -427,8 +425,16 @@ public class OrderedList
 		}
 		bufferFileRead.close();
 
-		//wordData.add("New Word");
+
+		//SHOWING LIST
 		wordData.showWordList();
+
+
+		//SAVING ORDERED LIST IN SAME FILE
 		wordData.saveIntoSameFile();
+
+
+		//SHOWING ORDERED LIST
+		wordData.showWordList();
 	}
 }
