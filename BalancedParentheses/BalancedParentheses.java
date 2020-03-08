@@ -113,6 +113,7 @@ public class BalancedParentheses
 	{
 		StackList<String> StackObject = new StackList<String>();
 	
+		
 		//POP METHOD CALLED
 		StackObject.pop();
 		StackObject.showStack();
