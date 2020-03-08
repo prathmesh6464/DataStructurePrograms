@@ -64,6 +64,27 @@ class Queue<T>
 			size--;
 		}
 	}
+	
+	
+	//METHOD OF SIZE
+	int size()
+	{
+		return size;
+	}
+
+
+	//QUEUE EMPTY OR NOT
+	void isEmpty()
+	{
+		if(size == 0)
+		{
+			System.out.println("Queue is empty");
+		}
+		else
+		{
+			System.out.println("Queue is Not empty");
+		}
+	}
 }
 
 
@@ -86,5 +107,13 @@ public class BankingCashCounter
 		
 		//DEQUEUE METHOD CALLED
 		newPerson.deQueue();
+		
+		
+		//IS EMPTY QUEUE METHOD CALLED
+		newPerson.isEmpty();
+		
+		
+		//SIZE METHO CALLED
+		System.out.println(newPerson.size());
 	}
 }
