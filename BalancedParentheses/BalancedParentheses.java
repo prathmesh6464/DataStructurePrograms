@@ -66,7 +66,7 @@ class StackList<T>
 	{
 		//VARIABLE
 		Node temporaryHeadNode = headNode;
-
+		
 
 		while(temporaryHeadNode.nextNode != null)
 		{
@@ -102,6 +102,22 @@ class StackList<T>
 			return returnWord;
 		}
 	}
+	
+	
+	//PEEK METHOD
+	String peek()
+	{
+		//VARIABLE
+		Node temporaryHeadNode = headNode;
+		
+
+		while(temporaryHeadNode.nextNode != null)
+		{
+			temporaryHeadNode = temporaryHeadNode.nextNode;
+		}
+		return temporaryHeadNode.expression;
+	}
+	
 }
 
 
@@ -114,8 +130,9 @@ public class BalancedParentheses
 		StackList<String> StackObject = new StackList<String>();
 	
 		
-		//POP METHOD CALLED
-		StackObject.pop();
-		StackObject.showStack();
+		//PEEK METHOD CALLED
+		StackObject.push("}");
+		System.out.println(StackObject.peek());
+		
 	}
 }
