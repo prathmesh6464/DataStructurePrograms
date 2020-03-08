@@ -2,6 +2,7 @@ package PalindromeChecker;
 import java.util.Scanner;
 
 
+
 //NODE
 class Node
 {
@@ -39,10 +40,9 @@ class Dequeue<T>
 			size++;
 		}
 		else
-		{
-			addingNewCharacter.nextNode = headNode.nextNode;
+		{			addingNewCharacter.nextNode = headNode.nextNode;
 			headNode.nextNode = addingNewCharacter;
-			size++;
+			size++;;
 		}
 	}
 
@@ -93,11 +93,50 @@ class Dequeue<T>
 				temparoryHead = temparoryHead.nextNode;
 			}
 
-			
+
 			String returnWord = temparoryHead.word;
 			temparoryHead.nextNode = null;
 			size--;
 			return returnWord;
+		}
+	}
+
+
+	//REMOVE FRONT METHOD
+	String removeFront()
+	{
+		if(headNode.nextNode == null)
+		{
+			System.out.println("Deque is empty");
+			return "";
+		}
+		else
+		{	
+			String temparoryHead = headNode.nextNode.word;
+			headNode.nextNode = headNode.nextNode.nextNode;
+			size--;
+			return temparoryHead;
+		}
+	}
+	
+	
+	//METHOD TO SHOW DEQUEUE
+	public void showDequeue()
+	{
+		//VARIABLE
+		Node temporaryHeadNode = headNode;
+
+		
+		if(headNode.nextNode == null)
+		{
+			System.out.println("Dequeue is empty");
+		}
+		
+		
+		while(temporaryHeadNode.nextNode != null)
+		{
+			temporaryHeadNode = temporaryHeadNode.nextNode;
+			System.out.println(temporaryHeadNode.word);
 		}
 	}
 }
@@ -111,22 +150,24 @@ public class PalindromeChecker
 	{
 		//OBJECT
 		Dequeue<String> dequeueObject = new Dequeue<String>();
-
-
-		//EMPTY DEQUEUE METHOD CALLED
-		dequeueObject.deQueue();
-
+
 
 		//ADD FRONT METHOD CALLED
 		dequeueObject.addFront("hello");
-
-
-		//ADD REAR METHOD CALLED
 		dequeueObject.addRear("testing");
-		
-		
+		dequeueObject.addFront("hello");
+		dequeueObject.addFront("hello");
+
+
 		//REMOVE REAR METHOD CALLED
-		System.out.print(dequeueObject.removeRear());
+		
+		System.out.println(dequeueObject.removeRear());
+		
+		//REMOVE FRONT METHOD CALLED
+		System.out.print(dequeueObject.removeFront());
+		System.out.println(dequeueObject.removeRear());
+		
+		//dequeueObject.showDequeue();
 	}
 }
 
