@@ -43,11 +43,28 @@ class Queue<T>
 			while(temporaryStartRow.nextPerson != null)
 			{
 				temporaryStartRow = temporaryStartRow.nextPerson;
+				System.out.println("Queue is empty"+temporaryStartRow.balanceCash);
 			}
 			temporaryStartRow.nextPerson = nextPersonInQueue;
 			size++;
 		}
+	}	
+	
+
+	//DEQUEUE METHOD
+	public void deQueue()
+	{
+		if(startRow.nextPerson == null)
+		{
+			System.out.println("Queue is empty");
+		}
+		else
+		{
+			startRow.nextPerson = startRow.nextPerson.nextPerson;
+			size--;
+		}
 	}
+
 }
 
 
@@ -65,7 +82,7 @@ public class BankingCashCounter
 		
 		
 		//ENQUEUE METHOD CALLED
-		newPerson.enQueue(100);
+		newPerson.enQueue(1008);
 		
 	}
 }
