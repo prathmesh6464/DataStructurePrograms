@@ -1,6 +1,7 @@
 package BalancedParentheses;
 import java.util.Scanner;
 
+
 //CREATING NODE FOR LINK LIST
 class Node
 {
@@ -66,7 +67,7 @@ class StackList<T>
 	{
 		//VARIABLE
 		Node temporaryHeadNode = headNode;
-		
+
 
 		while(temporaryHeadNode.nextNode != null)
 		{
@@ -102,14 +103,14 @@ class StackList<T>
 			return returnWord;
 		}
 	}
-	
-	
+
+
 	//PEEK METHOD
 	String peek()
 	{
 		//VARIABLE
 		Node temporaryHeadNode = headNode;
-		
+
 
 		while(temporaryHeadNode.nextNode != null)
 		{
@@ -117,7 +118,27 @@ class StackList<T>
 		}
 		return temporaryHeadNode.expression;
 	}
-	
+
+
+	//METHOD OF SIZE
+	int size()
+	{
+		return size;
+	}
+
+
+	//METHOD OF IS LIST EMPTY OR NOT
+	void isEmpty()
+	{
+		if(size == 0)
+		{
+			System.out.println("List is empty");
+		}
+		else
+		{
+			System.out.println("List is Not empty");
+		}
+	}
 }
 
 
@@ -128,11 +149,13 @@ public class BalancedParentheses
 	public static void main(String[] args)
 	{
 		StackList<String> StackObject = new StackList<String>();
-	
+
+
+		//IS EMPTY METHOD CALLED
+		StackObject.isEmpty();
 		
-		//PEEK METHOD CALLED
-		StackObject.push("}");
-		System.out.println(StackObject.peek());
 		
+		//SIZE METHOD CALLED
+		System.out.println(StackObject.size());
 	}
 }
