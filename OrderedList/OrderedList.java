@@ -11,11 +11,7 @@ import java.io.File;
 //CREATING NODE FOR LINK LIST
 class Node
 {
-<<<<<<< Updated upstream
-	int word;
-=======
 	int number;
->>>>>>> Stashed changes
 	Node nextNode = null;
 } 
 
