@@ -12,7 +12,7 @@ class Node
 //CREATING LINK LIST CLASS
 class StackList<T>
 {
-	//headNode NODE TYPE VAIABLE
+	//NODE TYPE VAIABLE
 	Node headNode = new Node();
 	int size = 0;
 
