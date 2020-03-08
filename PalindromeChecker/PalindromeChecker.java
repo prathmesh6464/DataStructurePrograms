@@ -1,6 +1,6 @@
 package PalindromeChecker;
-
 import java.util.Scanner;
+
 
 //NODE
 class Node
@@ -78,11 +78,12 @@ class Dequeue<T>
 	{
 		if(headNode.nextNode == null)
 		{
-			System.out.println("Deque is empty");
+			System.out.println("List is empty");
 			return "";
 		}
 		else
 		{	
+			//VARIABLES
 			int temparoryIter = 0;
 			Node temparoryHead = headNode;
 
@@ -92,13 +93,12 @@ class Dequeue<T>
 				temparoryHead = temparoryHead.nextNode;
 			}
 
-
 			String returnWord = temparoryHead.word;
 			temparoryHead.nextNode = null;
 			size--;
 			return returnWord;
 		}
-	}
+	}	
 
 
 	//REMOVE FRONT METHOD
@@ -169,7 +169,6 @@ class Dequeue<T>
 		String wordInput = scannerObject.next();
 		return wordInput;		
 	}
-
 }
 
 
@@ -179,16 +178,19 @@ public class PalindromeChecker
 	//MAIN METHOD
 	public static void main(String[] args)
 	{
-		//OBJECT
+		//VARIABLES AND OBJECT
 		Dequeue<String> dequeueObject = new Dequeue<String>();
-
-		//SIZE METHOD CALLED
-		System.out.println(dequeueObject.size());
-
-
-		//IS EMPTY METHOD CALLED
-		dequeueObject.isEmpty();
-
+		String inputWord = dequeueObject.takeInput();
+		String compareResult = "";
+		
+		for(int index=0; index<inputWord.length(); index++)
+		{
+			String eachCharacter = Character.toString(inputWord.charAt(index));
+			dequeueObject.addRear(eachCharacter);
+			compareResult += dequeueObject.removeRear();
+		}
+		dequeueObject.showDequeue();
+		System.out.print(compareResult);
 	}
 }
 
