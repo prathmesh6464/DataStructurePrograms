@@ -24,6 +24,28 @@ class Dequeue<T>
 		return headNode;
 	} 
 
+
+	//ADD FRONT METHOD
+	public void addFront(String addWord)
+	{
+		//VARIABLES
+		Node newNodeWord = new Node();
+		newNodeWord.word = addWord;
+
+
+		if(headNode.nextNode == null)
+		{
+			headNode.nextNode = newNodeWord.nextNode;
+			size++;
+		}
+		else
+		{
+			newNodeWord.nextNode = headNode.nextNode;
+			headNode.nextNode = newNodeWord;
+			size++;
+		}
+	}
+
 }
 
 
@@ -35,8 +57,8 @@ public class PalindromeChecker
 	{
 		//OBJECT
 		Dequeue<String> dequeueObject = new Dequeue<String>();
-		
-		
+
+
 		//EMPTY DEQUEUE METHOD CALLED
 		dequeueObject.deQueue();
 	}
