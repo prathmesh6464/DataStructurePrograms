@@ -5,7 +5,7 @@ import java.util.Scanner;
 //CREATING NODE FOR LINK LIST
 class Node
 {
-	String expression;
+	String parentheses;
 	Node nextNode = null;
 } 
 
@@ -28,25 +28,25 @@ class StackList<T>
 	//METHOD OF TAKING INPUT
 	String takeInput()
 	{
-		System.out.println("Enter Your Expression : ");
+		System.out.println("Enter Your parentheses : ");
 		Scanner scannerObject = new Scanner(System.in);
-		String expressionInput = scannerObject.next();
-		return expressionInput;		
+		String parenthesesInput = scannerObject.next();
+		return parenthesesInput;		
 	}
 
 
 	//PUSH METHOD
-	public void push(String expression)
+	public void push(String parentheses)
 	{
 		//VARIABLES OF NODE	
-		Node addingExpression = new Node();
-		addingExpression.expression = expression;
-		addingExpression.nextNode = null;
+		Node addingparentheses = new Node();
+		addingparentheses.parentheses = parentheses;
+		addingparentheses.nextNode = null;
 
 
 		if(headNode.nextNode == null )
 		{
-			headNode.nextNode = addingExpression;
+			headNode.nextNode = addingparentheses;
 			size++;
 		}
 		else
@@ -56,7 +56,7 @@ class StackList<T>
 			{
 				temporaryHeadNode = temporaryHeadNode.nextNode;
 			}
-			temporaryHeadNode.nextNode = addingExpression;
+			temporaryHeadNode.nextNode = addingparentheses;
 			size++;
 		}
 	}
@@ -72,7 +72,7 @@ class StackList<T>
 		while(temporaryHeadNode.nextNode != null)
 		{
 			temporaryHeadNode = temporaryHeadNode.nextNode;
-			System.out.println(temporaryHeadNode.expression);
+			System.out.println(temporaryHeadNode.parentheses);
 		}
 	}
 
@@ -97,7 +97,7 @@ class StackList<T>
 				temparoryHead = temparoryHead.nextNode;
 			}
 
-			String returnWord = temparoryHead.expression;
+			String returnWord = temparoryHead.parentheses;
 			temparoryHead.nextNode = null;
 			size--;
 			return returnWord;
@@ -116,7 +116,7 @@ class StackList<T>
 		{
 			temporaryHeadNode = temporaryHeadNode.nextNode;
 		}
-		return temporaryHeadNode.expression;
+		return temporaryHeadNode.parentheses;
 	}
 
 
@@ -127,7 +127,7 @@ class StackList<T>
 	}
 
 
-	//METHOD OF IS LIST EMPTY OR NOT
+	//STACK EMPTY OR NOT
 	void isEmpty()
 	{
 		if(size == 0)
@@ -142,7 +142,7 @@ class StackList<T>
 }
 
 
-//ORDERED LIST CLASS
+//STACK CLASS
 public class BalancedParentheses
 {	
 	//MAIN METHOD
