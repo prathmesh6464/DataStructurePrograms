@@ -11,21 +11,7 @@ import java.io.File;
 //CREATING NODE FOR LINK LIST
 class Node
 {
-	String word;
+	int word;
 	Node nextNode = null;
 } 
 
-
-//CREATING LINK LIST CLASS
-class LinkList<T>
-{
-	//headNode NODE TYPE VAIABLE
-	Node headNode = new Node();
-
-	
-	//EMPTY LIST METHOD
-	Node emptyList()
-	{
-		return headNode;
-	} 
-}
