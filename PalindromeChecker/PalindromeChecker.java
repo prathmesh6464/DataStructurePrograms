@@ -1,6 +1,4 @@
 package PalindromeChecker;
-import java.util.Scanner;
-
 
 
 //NODE
@@ -118,21 +116,21 @@ class Dequeue<T>
 			return temparoryHead;
 		}
 	}
-	
-	
+
+
 	//METHOD TO SHOW DEQUEUE
 	public void showDequeue()
 	{
 		//VARIABLE
 		Node temporaryHeadNode = headNode;
 
-		
+
 		if(headNode.nextNode == null)
 		{
 			System.out.println("Dequeue is empty");
 		}
-		
-		
+
+
 		while(temporaryHeadNode.nextNode != null)
 		{
 			temporaryHeadNode = temporaryHeadNode.nextNode;
@@ -151,23 +149,18 @@ public class PalindromeChecker
 		//OBJECT
 		Dequeue<String> dequeueObject = new Dequeue<String>();
 
-
 		//ADD FRONT METHOD CALLED
 		dequeueObject.addFront("hello");
 		dequeueObject.addRear("testing");
 		dequeueObject.addFront("hello");
-		dequeueObject.addFront("hello");
-
+		dequeueObject.addFront("hello");
 
 		//REMOVE REAR METHOD CALLED
-		
 		System.out.println(dequeueObject.removeRear());
-		
+
+
 		//REMOVE FRONT METHOD CALLED
 		System.out.print(dequeueObject.removeFront());
-		System.out.println(dequeueObject.removeRear());
-		
-		//dequeueObject.showDequeue();
 	}
 }
 
