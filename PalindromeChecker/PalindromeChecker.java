@@ -1,5 +1,6 @@
 package PalindromeChecker;
 
+import java.util.Scanner;
 
 //NODE
 class Node
@@ -137,8 +138,8 @@ class Dequeue<T>
 			System.out.println(temporaryHeadNode.word);
 		}
 	}
-	
-	
+
+
 	//METHOD OF SIZE
 	int size()
 	{
@@ -158,6 +159,17 @@ class Dequeue<T>
 			System.out.println("Dequeue is Not empty");
 		}
 	}
+
+
+	//METHOD OF TAKING INPUT
+	String takeInput()
+	{
+		System.out.println("Enter word for palindrome : ");
+		Scanner scannerObject = new Scanner(System.in);
+		String wordInput = scannerObject.next();
+		return wordInput;		
+	}
+
 }
 
 
@@ -176,7 +188,7 @@ public class PalindromeChecker
 
 		//IS EMPTY METHOD CALLED
 		dequeueObject.isEmpty();
-		
+
 	}
 }
 
