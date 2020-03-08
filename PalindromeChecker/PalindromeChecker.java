@@ -149,12 +149,6 @@ public class PalindromeChecker
 		//OBJECT
 		Dequeue<String> dequeueObject = new Dequeue<String>();
 
-		//ADD FRONT METHOD CALLED
-		dequeueObject.addFront("hello");
-		dequeueObject.addRear("testing");
-		dequeueObject.addFront("hello");
-		dequeueObject.addFront("hello");
-
 		//REMOVE REAR METHOD CALLED
 		System.out.println(dequeueObject.removeRear());
 
