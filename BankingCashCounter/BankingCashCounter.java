@@ -64,7 +64,6 @@ class Queue<T>
 			size--;
 		}
 	}
-
 }
 
 
@@ -84,5 +83,8 @@ public class BankingCashCounter
 		//ENQUEUE METHOD CALLED
 		newPerson.enQueue(1008);
 		
+		
+		//DEQUEUE METHOD CALLED
+		newPerson.deQueue();
 	}
 }
