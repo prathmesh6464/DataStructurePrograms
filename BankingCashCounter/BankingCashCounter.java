@@ -1,7 +1,7 @@
 package BankingCashCounter;
 
 
-//PERSON Person
+//PERSON NODE
 class Person
 {
 	int balanceCash = 100;
@@ -12,7 +12,7 @@ class Person
 //QUEUE CLASS
 class Queue<T>
 {
-	Person startRow = new Person();
+	static Person startRow = new Person();
 	int size=0;
 
 
