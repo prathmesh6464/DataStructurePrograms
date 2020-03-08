@@ -62,6 +62,9 @@ public class BankingCashCounter
 
 		//EMPTY QUEUE METHOD CALLED
 		newPerson.emptyQueue();
+		
+		
+		//ENQUEUE METHOD CALLED
 		newPerson.enQueue(100);
 		
 	}
