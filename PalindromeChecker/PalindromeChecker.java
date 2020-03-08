@@ -72,6 +72,34 @@ class Dequeue<T>
 			size++;
 		}
 	}
+
+
+	//REMOVE REAR METHOD
+	String removeRear()
+	{
+		if(headNode.nextNode == null)
+		{
+			System.out.println("Deque is empty");
+			return "";
+		}
+		else
+		{	
+			int temparoryIter = 0;
+			Node temparoryHead = headNode;
+
+
+			for(temparoryIter=0; temparoryIter<size-1; temparoryIter++)
+			{
+				temparoryHead = temparoryHead.nextNode;
+			}
+
+			
+			String returnWord = temparoryHead.word;
+			temparoryHead.nextNode = null;
+			size--;
+			return returnWord;
+		}
+	}
 }
 
 
@@ -87,14 +115,18 @@ public class PalindromeChecker
 
 		//EMPTY DEQUEUE METHOD CALLED
 		dequeueObject.deQueue();
-		
-		
+
+
 		//ADD FRONT METHOD CALLED
 		dequeueObject.addFront("hello");
-		
-		
+
+
 		//ADD REAR METHOD CALLED
 		dequeueObject.addRear("testing");
+		
+		
+		//REMOVE REAR METHOD CALLED
+		System.out.print(dequeueObject.removeRear());
 	}
 }
 
