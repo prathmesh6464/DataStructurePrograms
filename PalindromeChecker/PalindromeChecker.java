@@ -137,6 +137,27 @@ class Dequeue<T>
 			System.out.println(temporaryHeadNode.word);
 		}
 	}
+	
+	
+	//METHOD OF SIZE
+	int size()
+	{
+		return size;
+	}
+
+
+	//EMPTY OR NOT
+	void isEmpty()
+	{
+		if(size == 0)
+		{
+			System.out.println("Dequeue is empty");
+		}
+		else
+		{
+			System.out.println("Dequeue is Not empty");
+		}
+	}
 }
 
 
@@ -149,12 +170,13 @@ public class PalindromeChecker
 		//OBJECT
 		Dequeue<String> dequeueObject = new Dequeue<String>();
 
-		//REMOVE REAR METHOD CALLED
-		System.out.println(dequeueObject.removeRear());
+		//SIZE METHOD CALLED
+		System.out.println(dequeueObject.size());
 
 
-		//REMOVE FRONT METHOD CALLED
-		System.out.print(dequeueObject.removeFront());
+		//IS EMPTY METHOD CALLED
+		dequeueObject.isEmpty();
+		
 	}
 }
 
