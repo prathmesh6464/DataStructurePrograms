@@ -92,7 +92,7 @@ class StackList<T>
 			Node temparoryHead = headNode;
 
 
-			for(temparoryIter=0; temparoryIter<size-1; temparoryIter++)
+			for(temparoryIter=0; temparoryIter<size; temparoryIter++)
 			{
 				temparoryHead = temparoryHead.nextNode;
 			}
@@ -149,27 +149,48 @@ public class BalancedParentheses
 	//MAIN METHOD
 	public static void main(String[] args)
 	{
+		//VARIABLES AND OBJECTS
 		StackList<String> StackObject = new StackList<String>();
+		StackList<String> StackComoareObject = new StackList<String>();
 		String InputExpression = StackObject.takeInput();
 		System.out.println(InputExpression.length());
 		int indexOfString = 0;
+		int tempCheckingResult = 0;
+		
+		
 		while(indexOfString < InputExpression.length())
 		{
+			//OBJECT
 			String eachCharacter = Character.toString(InputExpression.charAt(indexOfString));
+			
+			
 			if(eachCharacter.equals("{") || eachCharacter.equals("[") || eachCharacter.equals("("))
 			{
 				StackObject.push(eachCharacter);
-				System.out.println(eachCharacter+" opening");
 			}
-			if(eachCharacter.equals("}") || eachCharacter.equals("]") || eachCharacter.equals(")"))
+			else if(eachCharacter.equals("}") || eachCharacter.equals("]") || eachCharacter.equals(")"))
 			{
-				System.out.println(eachCharacter+" closing");
-				
+				String stringCompare = StackObject.pop()+eachCharacter;
+				switch (stringCompare)
+				{
+					case "{}": break;
+					case "[]": break;
+					case "()": break;
+					default  : tempCheckingResult++;
+				}		
 			}
 			indexOfString++;
 		}
-		//StackObject.showStack();
-		//System.out.println(StackObject.pop());
+		
+		
+		if(tempCheckingResult == 0)
+		{
+			System.out.println("Parentheses is balanced");
+		}
+		else
+		{
+			System.out.println("Parentheses is not balanced");
+		}
 	}
 }
 
