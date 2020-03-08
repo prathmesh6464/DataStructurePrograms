@@ -29,23 +29,49 @@ class Dequeue<T>
 	public void addFront(String addWord)
 	{
 		//VARIABLES
-		Node newNodeWord = new Node();
-		newNodeWord.word = addWord;
+		Node addingNewCharacter = new Node();
+		addingNewCharacter.word = addWord;
 
 
 		if(headNode.nextNode == null)
 		{
-			headNode.nextNode = newNodeWord.nextNode;
+			headNode.nextNode = addingNewCharacter.nextNode;
 			size++;
 		}
 		else
 		{
-			newNodeWord.nextNode = headNode.nextNode;
-			headNode.nextNode = newNodeWord;
+			addingNewCharacter.nextNode = headNode.nextNode;
+			headNode.nextNode = addingNewCharacter;
 			size++;
 		}
 	}
 
+
+	//ADD REAR METHOD
+	public void addRear(String addWord)
+	{
+		//VARIABLES OF NODE	
+		Node addingNewCharacter = new Node();
+		addingNewCharacter.word = addWord;
+		addingNewCharacter.nextNode = null;
+
+
+		if(headNode.nextNode == null )
+		{
+			headNode.nextNode = addingNewCharacter;
+			size++;
+		}
+		else
+		{
+			Node temporaryHeadNode = headNode;
+			while(temporaryHeadNode.nextNode != null)
+			{
+				temporaryHeadNode = temporaryHeadNode.nextNode;
+			}
+			temporaryHeadNode.nextNode = addingNewCharacter;
+			size++;
+		}
+	}
 }
 
 
@@ -61,6 +87,14 @@ public class PalindromeChecker
 
 		//EMPTY DEQUEUE METHOD CALLED
 		dequeueObject.deQueue();
+		
+		
+		//ADD FRONT METHOD CALLED
+		dequeueObject.addFront("hello");
+		
+		
+		//ADD REAR METHOD CALLED
+		dequeueObject.addRear("testing");
 	}
 }
 
