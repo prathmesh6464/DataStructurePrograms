@@ -30,22 +30,22 @@ class Queue<T>
 		Person nextPersonInQueue = new Person();
 		nextPersonInQueue.balanceCash = balanceCash;
 		nextPersonInQueue.nextPerson = null;
-
+		
 
 		if(startRow.nextPerson == null )
 		{
-			startRow.nextPerson = nextPersonInQueue;
+			startRow.nextPerson = nextPersonInQueue.nextPerson;
 			size++;
 		}
 		else
 		{
-			Person temporaryStartRow = startRow;
-			while(temporaryStartRow.nextPerson != null)
+			Person temparoryStartRow = startRow.nextPerson;
+			while(temparoryStartRow.nextPerson != null)
 			{
-				temporaryStartRow = temporaryStartRow.nextPerson;
-				System.out.println("Queue is empty"+temporaryStartRow.balanceCash);
+				temparoryStartRow = temparoryStartRow.nextPerson;
+				System.out.println("Queue is empty"+temparoryStartRow.balanceCash);
 			}
-			temporaryStartRow.nextPerson = nextPersonInQueue;
+			temparoryStartRow.nextPerson = nextPersonInQueue;
 			size++;
 		}
 	}	
@@ -60,21 +60,21 @@ class Queue<T>
 		}
 		else
 		{
-			startRow.nextPerson = startRow.nextPerson.nextPerson;
-			size--;
+			Person temparoryStart = startRow.nextPerson;
+			startRow.nextPerson = temparoryStart.nextPerson;
 		}
 	}
 	
 	
 	//METHOD OF SIZE
-	int size()
+	public int size()
 	{
 		return size;
 	}
 
 
 	//QUEUE EMPTY OR NOT
-	void isEmpty()
+	public void isEmpty()
 	{
 		if(size == 0)
 		{
@@ -94,7 +94,7 @@ public class BankingCashCounter
 	//MAIN CLASS
 	public static void main(String[] args) 
 	{
-		Queue newPerson = new Queue();
+		Queue<Integer> newPerson = new Queue<Integer>();
 
 
 		//EMPTY QUEUE METHOD CALLED
@@ -103,9 +103,12 @@ public class BankingCashCounter
 		
 		//ENQUEUE METHOD CALLED
 		newPerson.enQueue(1008);
+		newPerson.enQueue(1008);
+		newPerson.enQueue(1008);
 		
 		
 		//DEQUEUE METHOD CALLED
+		newPerson.deQueue();
 		newPerson.deQueue();
 		
 		
