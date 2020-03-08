@@ -27,7 +27,7 @@ class StackList<T>
 	//METHOD OF TAKING INPUT
 	String takeInput()
 	{
-		System.out.println("Enter the word which you want to find and delete : ");
+		System.out.println("Enter Your Expression : ");
 		Scanner scannerObject = new Scanner(System.in);
 		String expressionInput = scannerObject.next();
 		return expressionInput;		
@@ -74,6 +74,34 @@ class StackList<T>
 			System.out.println(temporaryHeadNode.expression);
 		}
 	}
+
+
+	//POP METHOD
+	String pop()
+	{
+		if(headNode.nextNode == null)
+		{
+			System.out.println("Stack is empty");
+			return "";
+		}
+		else
+		{	
+			//VARIABLE
+			int temparoryIter = 0;
+			Node temparoryHead = headNode;
+
+
+			for(temparoryIter=0; temparoryIter<size-1; temparoryIter++)
+			{
+				temparoryHead = temparoryHead.nextNode;
+			}
+
+			String returnWord = temparoryHead.expression;
+			temparoryHead.nextNode = null;
+			size--;
+			return returnWord;
+		}
+	}
 }
 
 
@@ -84,8 +112,9 @@ public class BalancedParentheses
 	public static void main(String[] args)
 	{
 		StackList<String> StackObject = new StackList<String>();
-		StackObject.stack();
-		StackObject.push("(");
+	
+		//POP METHOD CALLED
+		StackObject.pop();
 		StackObject.showStack();
 	}
 }
