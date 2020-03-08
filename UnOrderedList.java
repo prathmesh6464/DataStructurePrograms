@@ -95,7 +95,8 @@ class LinkList<T>
 			int isMatches = 0;
 			Node temporaryHeadNode = headNode;
 
-
+			
+			//CHECKING WORD IS PRESENT OR NOT
 			while(temporaryHeadNode.nextNode != null)
 			{
 				temporaryHeadNode = temporaryHeadNode.nextNode;
@@ -185,7 +186,7 @@ class LinkList<T>
 	{
 		try 
 		{
-			//VARIABLES
+			//VARIABLE
 			Node temporaryHeadNode = headNode;
 
 
