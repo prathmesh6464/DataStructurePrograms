@@ -5,7 +5,7 @@ import java.util.Scanner;
 //CREATING NODE FOR LINK LIST
 class Node
 {
-	String parentheses;
+	String expression;
 	Node nextNode = null;
 } 
 
@@ -28,25 +28,25 @@ class StackList<T>
 	//METHOD OF TAKING INPUT
 	String takeInput()
 	{
-		System.out.println("Enter Your parentheses : ");
+		System.out.println("Enter your expression : ");
 		Scanner scannerObject = new Scanner(System.in);
-		String parenthesesInput = scannerObject.next();
-		return parenthesesInput;		
+		String expressionInput = scannerObject.next();
+		return expressionInput;		
 	}
 
 
 	//PUSH METHOD
-	public void push(String parentheses)
+	public void push(String expression)
 	{
 		//VARIABLES OF NODE	
-		Node addingparentheses = new Node();
-		addingparentheses.parentheses = parentheses;
-		addingparentheses.nextNode = null;
+		Node addingExpression = new Node();
+		addingExpression.expression = expression;
+		addingExpression.nextNode = null;
 
 
 		if(headNode.nextNode == null )
 		{
-			headNode.nextNode = addingparentheses;
+			headNode.nextNode = addingExpression;
 			size++;
 		}
 		else
@@ -56,7 +56,7 @@ class StackList<T>
 			{
 				temporaryHeadNode = temporaryHeadNode.nextNode;
 			}
-			temporaryHeadNode.nextNode = addingparentheses;
+			temporaryHeadNode.nextNode = addingExpression;
 			size++;
 		}
 	}
@@ -72,7 +72,7 @@ class StackList<T>
 		while(temporaryHeadNode.nextNode != null)
 		{
 			temporaryHeadNode = temporaryHeadNode.nextNode;
-			System.out.println(temporaryHeadNode.parentheses);
+			System.out.println(temporaryHeadNode.expression);
 		}
 	}
 
@@ -97,7 +97,8 @@ class StackList<T>
 				temparoryHead = temparoryHead.nextNode;
 			}
 
-			String returnWord = temparoryHead.parentheses;
+
+			String returnWord = temparoryHead.expression;
 			temparoryHead.nextNode = null;
 			size--;
 			return returnWord;
@@ -116,7 +117,7 @@ class StackList<T>
 		{
 			temporaryHeadNode = temporaryHeadNode.nextNode;
 		}
-		return temporaryHeadNode.parentheses;
+		return temporaryHeadNode.expression;
 	}
 
 
@@ -132,11 +133,11 @@ class StackList<T>
 	{
 		if(size == 0)
 		{
-			System.out.println("List is empty");
+			System.out.println("Stack is empty");
 		}
 		else
 		{
-			System.out.println("List is Not empty");
+			System.out.println("Stack is Not empty");
 		}
 	}
 }
@@ -149,13 +150,26 @@ public class BalancedParentheses
 	public static void main(String[] args)
 	{
 		StackList<String> StackObject = new StackList<String>();
-
-
-		//IS EMPTY METHOD CALLED
-		StackObject.isEmpty();
-		
-		
-		//SIZE METHOD CALLED
-		System.out.println(StackObject.size());
+		String InputExpression = StackObject.takeInput();
+		System.out.println(InputExpression.length());
+		int indexOfString = 0;
+		while(indexOfString < InputExpression.length())
+		{
+			String eachCharacter = Character.toString(InputExpression.charAt(indexOfString));
+			if(eachCharacter.equals("{") || eachCharacter.equals("[") || eachCharacter.equals("("))
+			{
+				StackObject.push(eachCharacter);
+				System.out.println(eachCharacter+" opening");
+			}
+			if(eachCharacter.equals("}") || eachCharacter.equals("]") || eachCharacter.equals(")"))
+			{
+				System.out.println(eachCharacter+" closing");
+				
+			}
+			indexOfString++;
+		}
+		//StackObject.showStack();
+		//System.out.println(StackObject.pop());
 	}
 }
+
