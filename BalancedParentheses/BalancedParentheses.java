@@ -1,10 +1,10 @@
 package BalancedParentheses;
-
+import java.util.Scanner;
 
 //CREATING NODE FOR LINK LIST
 class Node
 {
-	String word;
+	String expression;
 	Node nextNode = null;
 } 
 
@@ -22,6 +22,58 @@ class StackList<T>
 	{
 		return headNode;
 	} 
+
+
+	//METHOD OF TAKING INPUT
+	String takeInput()
+	{
+		System.out.println("Enter the word which you want to find and delete : ");
+		Scanner scannerObject = new Scanner(System.in);
+		String expressionInput = scannerObject.next();
+		return expressionInput;		
+	}
+
+
+	//PUSH METHOD
+	public void push(String expression)
+	{
+		//VARIABLES OF NODE	
+		Node addingExpression = new Node();
+		addingExpression.expression = expression;
+		addingExpression.nextNode = null;
+
+
+		if(headNode.nextNode == null )
+		{
+			headNode.nextNode = addingExpression;
+			size++;
+		}
+		else
+		{
+			Node temporaryHeadNode = headNode;
+			while(temporaryHeadNode.nextNode != null)
+			{
+				temporaryHeadNode = temporaryHeadNode.nextNode;
+			}
+			temporaryHeadNode.nextNode = addingExpression;
+			size++;
+		}
+	}
+
+
+	//METHOD TO SHOW STACK
+	public void showStack()
+	{
+		//VARIABLE
+		Node temporaryHeadNode = headNode;
+
+
+		while(temporaryHeadNode.nextNode != null)
+		{
+			temporaryHeadNode = temporaryHeadNode.nextNode;
+			System.out.println(temporaryHeadNode.expression);
+		}
+	}
 }
 
 
@@ -33,5 +85,7 @@ public class BalancedParentheses
 	{
 		StackList<String> StackObject = new StackList<String>();
 		StackObject.stack();
+		StackObject.push("(");
+		StackObject.showStack();
 	}
 }
