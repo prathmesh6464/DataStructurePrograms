@@ -1,4 +1,5 @@
 package BankingCashCounter;
+import java.util.Scanner;
 
 
 //PERSON NODE
@@ -13,7 +14,7 @@ class Person
 class Queue<T>
 {
 	Person startRow = new Person();
-	int size=0;
+	static int size = 0;
 
 
 	//EMPTY QUEUE METHOD
@@ -24,26 +25,25 @@ class Queue<T>
 
 
 	//ENQUEUE METHOD
-	public void enQueue(int balanceCash)
+	public void enQueue()
 	{
 		//VARIABLES OF PERSON
 		Person nextPersonInQueue = new Person();
-		nextPersonInQueue.balanceCash = balanceCash;
+		nextPersonInQueue.balanceCash = 100;
 		nextPersonInQueue.nextPerson = null;
 
 
 		if(startRow.nextPerson == null )
 		{
-			startRow.nextPerson = nextPersonInQueue.nextPerson;
+			startRow.nextPerson = nextPersonInQueue;
 			size++;
 		}
 		else
 		{
-			Person temparoryStartRow = startRow.nextPerson;
+			Person temparoryStartRow = startRow;
 			while(temparoryStartRow.nextPerson != null)
 			{
 				temparoryStartRow = temparoryStartRow.nextPerson;
-				System.out.println("Queue is empty"+temparoryStartRow.balanceCash);
 			}
 			temparoryStartRow.nextPerson = nextPersonInQueue;
 			size++;
@@ -56,7 +56,7 @@ class Queue<T>
 	{
 		if(size == 0)
 		{
-			System.out.println("Dequeue is empty");
+			System.out.println("Queue is empty");
 		}
 		else
 		{	
@@ -78,11 +78,25 @@ class Queue<T>
 	{
 		if(size == 0)
 		{
-			System.out.println("Dequeue is empty");
+			System.out.println("Queue is empty");
 		}
 		else
 		{
-			System.out.println("Dequeue is Not empty");
+			System.out.println("Queue is Not empty");
+		}
+	}
+
+
+	//METHOD TO SHOW STACK
+	public void showQueue()
+	{
+		//VARIABLE
+		Person temporaryHeadNode = startRow;
+
+
+		while(temporaryHeadNode.nextPerson != null)
+		{
+			temporaryHeadNode = temporaryHeadNode.nextPerson;
 		}
 	}
 }
@@ -94,32 +108,76 @@ public class BankingCashCounter
 	//MAIN CLASS
 	public static void main(String[] args) 
 	{
+		//VARIABLE AND OBJECTS
+		double cashCounterBalanceMoney = 5000.00;
 		Queue<Integer> newPerson = new Queue<Integer>();
+		Scanner scannerObject = new Scanner(System.in);
+		System.out.println("What is queue capacity of bank ?");
+		int queueCapacity = scannerObject.nextInt();
 
 
-		//EMPTY QUEUE METHOD CALLED
-		newPerson.emptyQueue();
+		//ADDING PEOPLE IN ROW
+		for(int capacityIter=0; capacityIter<queueCapacity; capacityIter++)
+		{
+			newPerson.enQueue();
+		}
 
 
-		System.out.println(newPerson.size());
-
-		//ENQUEUE METHOD CALLED
-		newPerson.enQueue(1008);
-		newPerson.enQueue(1008);
-		newPerson.enQueue(1008);
-
-		System.out.println(newPerson.size());
-
-		//DEQUEUE METHOD CALLED
-		newPerson.deQueue();
-		newPerson.deQueue();
+		while(true)
+		{
+			System.out.println("Do you want to withdraw or deposite ?");
+			System.out.println("Input 1 for withdraw");
+			System.out.println("Input 2 for deposite");
+			int choiceWithdrawOrDeposite = scannerObject.nextInt();
 
 
-		//IS EMPTY QUEUE METHOD CALLED
-		newPerson.isEmpty();
+			switch(choiceWithdrawOrDeposite)
+			{
+			case 1:
+				System.out.println("Enter amount do you to withdraw ?");
+				double amountWithdraw = scannerObject.nextInt();
+				cashCounterBalanceMoney = cashCounterBalanceMoney - amountWithdraw;
+				System.out.println("Bank total amout : "+cashCounterBalanceMoney);
 
 
-		//SIZE METHO CALLED
-		System.out.println(newPerson.size());
-	}
+				newPerson.deQueue();
+
+
+				System.out.println(newPerson.size()+" Peoples are in row");
+				queueCapacity--;
+				break;
+
+			case 2:
+				System.out.println("Enter amount do you to deposite ?");
+				double amountDeposite = scannerObject.nextInt();					
+				cashCounterBalanceMoney = cashCounterBalanceMoney + amountDeposite;
+				System.out.println("Bank total amout : "+cashCounterBalanceMoney);
+
+
+				newPerson.deQueue();
+
+
+				System.out.println(newPerson.size()+" Peoples are in row");
+				queueCapacity--;
+				break;
+
+			default:
+				System.out.println("Invalid input");
+			}	
+
+
+			if(cashCounterBalanceMoney <= 0)
+			{
+				System.out.println("Insufficient balance in bank");
+				break;				
+			}
+			
+			
+			if(queueCapacity <= 0) 
+			{
+				System.out.println("Row is empty");
+				break;
+			}
+		}
+	}	
 }
