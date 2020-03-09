@@ -2,7 +2,7 @@ package PalindromeChecker;
 import java.util.Scanner;
 
 
-//NODE
+//NODE FOR DEQUEUE
 class Node
 {
 	String word;
