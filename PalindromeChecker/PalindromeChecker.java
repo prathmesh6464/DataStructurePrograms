@@ -89,7 +89,7 @@ class Dequeue<T>
 				temparoryHead = temparoryHead.nextNode;
 			}
 
-			
+
 			String returnWord = temparoryHead.word;
 			temparoryHead.nextNode = null;
 			size--;
@@ -181,8 +181,8 @@ public class PalindromeChecker
 		String inputWord = dequeueObject.takeInput();
 		String compareResult = "";
 		String compareResultReverse = "";
-		
-		
+
+
 		//CHECKING STRING IS PALINDROME OR NOT
 		for(int index=0; index<inputWord.length(); index++)
 		{
@@ -191,12 +191,12 @@ public class PalindromeChecker
 			compareResult += eachCharacter;
 			compareResultReverse = dequeueObject.removeFront() + compareResultReverse;
 		}
-		
+
 
 		if((compareResult).equals(compareResultReverse))
-			{	System.out.println("String is palindrome");	}
+		{	System.out.println("String is palindrome");	}
 		else
-			{	System.out.println("String is not palindrome");	} 
+		{	System.out.println("String is not palindrome");	} 
 	}
 }
 
