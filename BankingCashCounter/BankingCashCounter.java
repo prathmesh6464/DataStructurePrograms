@@ -12,7 +12,7 @@ class Person
 //QUEUE CLASS
 class Queue<T>
 {
-	static Person startRow = new Person();
+	Person startRow = new Person();
 	int size=0;
 
 
@@ -30,7 +30,7 @@ class Queue<T>
 		Person nextPersonInQueue = new Person();
 		nextPersonInQueue.balanceCash = balanceCash;
 		nextPersonInQueue.nextPerson = null;
-		
+
 
 		if(startRow.nextPerson == null )
 		{
@@ -49,23 +49,23 @@ class Queue<T>
 			size++;
 		}
 	}	
-	
 
-	//DEQUEUE METHOD
-	public void deQueue()
+
+	//DEQUEUE METHOD REMOVE FRONT PERSON
+	void deQueue()
 	{
-		if(startRow.nextPerson == null)
+		if(size == 0)
 		{
-			System.out.println("Queue is empty");
+			System.out.println("Dequeue is empty");
 		}
 		else
-		{
-			Person temparoryStart = startRow.nextPerson;
-			startRow.nextPerson = temparoryStart.nextPerson;
+		{	
+			startRow.nextPerson = startRow.nextPerson.nextPerson;
+			size--;			
 		}
 	}
-	
-	
+
+
 	//METHOD OF SIZE
 	public int size()
 	{
@@ -78,11 +78,11 @@ class Queue<T>
 	{
 		if(size == 0)
 		{
-			System.out.println("Queue is empty");
+			System.out.println("Dequeue is empty");
 		}
 		else
 		{
-			System.out.println("Queue is Not empty");
+			System.out.println("Dequeue is Not empty");
 		}
 	}
 }
@@ -99,23 +99,26 @@ public class BankingCashCounter
 
 		//EMPTY QUEUE METHOD CALLED
 		newPerson.emptyQueue();
-		
-		
+
+
+		System.out.println(newPerson.size());
+
 		//ENQUEUE METHOD CALLED
 		newPerson.enQueue(1008);
 		newPerson.enQueue(1008);
 		newPerson.enQueue(1008);
-		
-		
+
+		System.out.println(newPerson.size());
+
 		//DEQUEUE METHOD CALLED
 		newPerson.deQueue();
 		newPerson.deQueue();
-		
-		
+
+
 		//IS EMPTY QUEUE METHOD CALLED
 		newPerson.isEmpty();
-		
-		
+
+
 		//SIZE METHO CALLED
 		System.out.println(newPerson.size());
 	}
