@@ -145,7 +145,7 @@ class Dequeue<T>
 	}
 
 
-	//EMPTY OR NOT
+	//DEQUEUE EMPTY OR NOT
 	void isEmpty()
 	{
 		if(size == 0)
