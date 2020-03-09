@@ -16,11 +16,13 @@ class Dequeue<T>
 	//NODE TYPE VAIABLE
 	Node headNode = new Node();
 	int size = 0;
+	int tempSize = 1;
 
 
 	//EMPTY DEQUEUE METHOD
 	Node deQueue()
 	{
+		Node headNode = new Node();
 		return headNode;
 	} 
 
@@ -31,45 +33,41 @@ class Dequeue<T>
 		//VARIABLES
 		Node addingNewCharacter = new Node();
 		addingNewCharacter.word = addWord;
+		addingNewCharacter.nextNode = null;
 
 
 		if(headNode.nextNode == null)
 		{
-			headNode.nextNode = addingNewCharacter.nextNode;
+			headNode.nextNode = addingNewCharacter;
 			size++;
 		}
 		else
 		{			addingNewCharacter.nextNode = headNode.nextNode;
 			headNode.nextNode = addingNewCharacter;
-			size++;;
+			size++;
 		}
 	}
 
 
 	//ADD REAR METHOD
-	public void addRear(String addWord)
+	public void addRear(String addingWord)
 	{
-		//VARIABLES OF NODE	
-		Node addingNewCharacter = new Node();
-		addingNewCharacter.word = addWord;
-		addingNewCharacter.nextNode = null;
+		//VARIABLES
+		Node newNodeWord = new Node();
+		newNodeWord.word = addingWord;
+		newNodeWord.nextNode = null;
+		Node temporaryHeadNode = headNode;
 
 
-		if(headNode.nextNode == null )
+		for(int iter=0; iter<(size); iter++)
 		{
-			headNode.nextNode = addingNewCharacter;
-			size++;
+			temporaryHeadNode = temporaryHeadNode.nextNode;
 		}
-		else
-		{
-			Node temporaryHeadNode = headNode;
-			while(temporaryHeadNode.nextNode != null)
-			{
-				temporaryHeadNode = temporaryHeadNode.nextNode;
-			}
-			temporaryHeadNode.nextNode = addingNewCharacter;
-			size++;
-		}
+
+
+		newNodeWord.nextNode = temporaryHeadNode.nextNode;
+		temporaryHeadNode.nextNode = newNodeWord;
+		size++;
 	}
 
 
@@ -83,22 +81,22 @@ class Dequeue<T>
 		}
 		else
 		{	
-			//VARIABLES
-			int temparoryIter = 0;
 			Node temparoryHead = headNode;
 
 
-			for(temparoryIter=0; temparoryIter<size-1; temparoryIter++)
+			for(int temparoryIter=0; temparoryIter<size; temparoryIter++)
 			{
 				temparoryHead = temparoryHead.nextNode;
 			}
 
+			
 			String returnWord = temparoryHead.word;
 			temparoryHead.nextNode = null;
 			size--;
 			return returnWord;
 		}
-	}	
+	}
+
 
 
 	//REMOVE FRONT METHOD
@@ -113,7 +111,7 @@ class Dequeue<T>
 		{	
 			String temparoryHead = headNode.nextNode.word;
 			headNode.nextNode = headNode.nextNode.nextNode;
-			size--;
+			--size;
 			return temparoryHead;
 		}
 	}
@@ -182,15 +180,23 @@ public class PalindromeChecker
 		Dequeue<String> dequeueObject = new Dequeue<String>();
 		String inputWord = dequeueObject.takeInput();
 		String compareResult = "";
+		String compareResultReverse = "";
 		
+		
+		//CHECKING STRING IS PALINDROME OR NOT
 		for(int index=0; index<inputWord.length(); index++)
 		{
 			String eachCharacter = Character.toString(inputWord.charAt(index));
 			dequeueObject.addRear(eachCharacter);
-			compareResult += dequeueObject.removeRear();
+			compareResult += eachCharacter;
+			compareResultReverse = dequeueObject.removeFront() + compareResultReverse;
 		}
-		dequeueObject.showDequeue();
-		System.out.print(compareResult);
+		
+
+		if((compareResult).equals(compareResultReverse))
+			{	System.out.println("String is palindrome");	}
+		else
+			{	System.out.println("String is not palindrome");	} 
 	}
 }
 
