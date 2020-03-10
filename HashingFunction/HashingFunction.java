@@ -349,6 +349,7 @@ class LinkList<T>
 				temparoryHead = temparoryHead.nextNode;
 			}
 
+			
 			int returnNumber = temparoryHead.number;
 			temparoryHead.nextNode = null;
 			size--;
@@ -388,7 +389,7 @@ class LinkList<T>
 }
 
 
-//ORDERED LIST CLASS
+//HASHING FUNCTION CLASS
 public class HashingFunction
 {	
 	//MAIN METHOD
