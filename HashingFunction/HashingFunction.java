@@ -91,38 +91,35 @@ class LinkList<T>
 	//METHOD TO CHECK number IS PRESENT OR NOT
 	void isNumberPresent(int findNumber)
 	{
-		try 
+		//VARIABLES
+		int isMatches = 0;
+		Node temporaryHeadNode = headNode;
+
+
+		while(temporaryHeadNode.nextNode != null)
 		{
-			//VARIABLES
-			int isMatches = 0;
-			Node temporaryHeadNode = headNode;
-
-
-			while(temporaryHeadNode.nextNode != null)
+			temporaryHeadNode = temporaryHeadNode.nextNode;
+			if(temporaryHeadNode.number == findNumber)
 			{
-				temporaryHeadNode = temporaryHeadNode.nextNode;
-				if(temporaryHeadNode.number == findNumber)
-				{
-					isMatches=1;
-				}			
-			}
-
-
-			if(isMatches == 0)
-			{
-				LinkList.this.append(findNumber);
-				size++;
+				isMatches=1;
 			}			
 		}
-		catch(NullPointerException e)
+
+
+		if(isMatches == 0)
 		{
-			System.out.println("List endded");
+			LinkList.this.append(findNumber);
+			size++;
+		}
+		else
+		{
+			LinkList.this.remove(findNumber);
 		}
 	}
 
 
 	//METHOD TO SEARCH number
-	void search(int findNumber)
+	int search(int findNumber)
 	{
 		//VARIABLES
 		Node temporaryHeadNode = headNode;
@@ -136,6 +133,7 @@ class LinkList<T>
 			{
 				isMatches = 1;
 				System.out.println(findNumber+" Found in list");
+				return isMatches;
 			}			
 		}
 
@@ -144,10 +142,11 @@ class LinkList<T>
 		{
 			System.out.println(findNumber+" Not found in list");
 		}
+		return -1;
 	}
 
 
-	//METHOD TO DELETE number
+	//METHOD TO DELETE NUMBER
 	void remove(int removeNumber)
 	{
 		if(headNode.nextNode == null)
@@ -160,23 +159,24 @@ class LinkList<T>
 			{	
 				//VARIABLES
 				Node previousTemporaryHeadNode = headNode;			
-				Node temporaryHeadNode= headNode.nextNode;
+				Node temporaryHeadNode = headNode.nextNode;
 
 
-				while(temporaryHeadNode.number == removeNumber)
+				while(temporaryHeadNode.number != removeNumber)
 				{
+
 					previousTemporaryHeadNode = temporaryHeadNode;
 					temporaryHeadNode = temporaryHeadNode.nextNode;
 				}
 
 
-				System.out.println("Deleted number : "+temporaryHeadNode.number);
+				System.out.println("Deleted word : "+temporaryHeadNode.number);
 				previousTemporaryHeadNode.nextNode = previousTemporaryHeadNode.nextNode.nextNode;
 				size--;
 			}
 			catch(NullPointerException e) 
 			{
-				System.out.println("Number deletion operation completed.");
+				System.out.println("Word deletion operation completed.");
 			}
 		}
 	}
@@ -188,13 +188,13 @@ class LinkList<T>
 		//VARIABLES
 		Node temporaryHeadNode = headNode;
 
-		
+
 		if(temporaryHeadNode.nextNode == null)
 		{
 			System.out.println("List is empty");
 		}
-		
-		
+
+
 		while(temporaryHeadNode.nextNode != null)
 		{
 			temporaryHeadNode = temporaryHeadNode.nextNode;
@@ -399,8 +399,11 @@ public class HashingFunction
 		BufferedReader bufferFileRead = new BufferedReader(fileRead);
 		String line = bufferFileRead.readLine();
 
+		//SHOWING EMPTY LIST
+		numberData.showNumberList();
 
 
+		//ADDING FILE NUMBERS TO LINK LIST
 		while(line != null) 
 		{
 			int number = Integer.parseInt(line);
@@ -417,11 +420,15 @@ public class HashingFunction
 		numberData.showNumberList();
 
 
+		//TAKING USER INPUT TO DELETE THAT NUMBER OR ADDING INTO LIST
+		int findNumber = numberData.takeInput();
+
+
+		//CHECKING NUMBER IS PRESENT OR NOT THEN ADD INTO FILE OR DELETE THAT NUMBER
+		numberData.isNumberPresent(findNumber);
+
+
 		//SAVING ORDERED LIST IN SAME FILE
 		numberData.saveIntoSameFile();
-
-
-		//SHOWING ORDERED LIST
-		numberData.showNumberList();
 	}
 }
