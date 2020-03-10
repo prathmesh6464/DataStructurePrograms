@@ -185,22 +185,21 @@ class LinkList<T>
 	//METHOD TO SHOW LIST
 	public void showNumberList()
 	{
-		try 
-		{
-			//VARIABLES
-			Node temporaryHeadNode = headNode;
+		//VARIABLES
+		Node temporaryHeadNode = headNode;
 
-
-			while(temporaryHeadNode.nextNode != null)
-			{
-				temporaryHeadNode = temporaryHeadNode.nextNode;
-				System.out.println(temporaryHeadNode.number);
-			}
-		}
-		catch(NullPointerException e)
+		
+		if(temporaryHeadNode.nextNode == null)
 		{
-			System.out.println("List endded");
+			System.out.println("List is empty");
 		}
+		
+		
+		while(temporaryHeadNode.nextNode != null)
+		{
+			temporaryHeadNode = temporaryHeadNode.nextNode;
+			System.out.println(temporaryHeadNode.number);
+		}		
 	}
 
 
@@ -301,7 +300,7 @@ class LinkList<T>
 			bufferWriterObject.write(String.valueOf(arrayForSortingNumbers[index]));
 		}
 
-		
+
 		//BUFFERWRITER FLUSH AND THEN CLOSED
 		bufferWriterObject.flush();
 		bufferWriterObject.close();		
@@ -399,22 +398,18 @@ public class HashingFunction
 		FileReader fileRead = new FileReader(new File("C:\\Users\\King\\eclipse-workspace\\SnakeAndLadderProgram\\TempFile.txt"));
 		BufferedReader bufferFileRead = new BufferedReader(fileRead);
 		String line = bufferFileRead.readLine();
-		
+
 
 
 		while(line != null) 
 		{
-			//try
-			//{
-				int number = Integer.parseInt(line);
-				numberData.append(number);
-				line = bufferFileRead.readLine();
-			//}
-		//catch(NullPointerException e)
-			//{
-				//System.out.println("List endded");
-			//}
+			int number = Integer.parseInt(line);
+			numberData.append(number);
+			line = bufferFileRead.readLine();
 		}
+
+
+		//BUFFER READER CLOSED
 		bufferFileRead.close();
 
 
