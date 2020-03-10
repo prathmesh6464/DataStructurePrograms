@@ -17,11 +17,21 @@ class Node
 } 
 
 
+//INDEX NODE
+class indexNode
+{
+	int index = -1;
+	int number;
+	Node nextNode = null;
+} 
+
+
 //CREATING LINK LIST CLASS
 class LinkList<T>
 {
 	//headNode NODE TYPE VAIABLE
 	Node headNode = new Node();
+	indexNode headIndexNode = new indexNode();
 	int size = 0;
 
 
@@ -349,7 +359,7 @@ class LinkList<T>
 				temparoryHead = temparoryHead.nextNode;
 			}
 
-			
+
 			int returnNumber = temparoryHead.number;
 			temparoryHead.nextNode = null;
 			size--;
@@ -385,6 +395,27 @@ class LinkList<T>
 			size--;
 		}
 		return -1;	
+	}
+
+
+	//HASHING INDEX FROM 0 TO 10 
+	void hashingIndex()
+	{
+		//VARIABLES
+		Node temporaryHeadNode = headNode;
+
+
+		if(temporaryHeadNode.nextNode == null)
+		{
+			System.out.println("List is empty");
+		}
+
+
+		while(temporaryHeadNode.nextNode != null)
+		{
+			temporaryHeadNode = temporaryHeadNode.nextNode;
+			System.out.println(temporaryHeadNode.number);
+		}		
 	}
 }
 
