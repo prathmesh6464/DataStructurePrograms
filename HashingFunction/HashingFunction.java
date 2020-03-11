@@ -13,6 +13,7 @@ import java.io.File;
 class Node
 {
 	int number;
+	int index = -1;
 	Node nextNode = null;
 } 
 
@@ -22,7 +23,7 @@ class indexNode
 {
 	int index = -1;
 	int number;
-	Node nextNode = null;
+	indexNode nextNode = null;
 } 
 
 
@@ -33,6 +34,7 @@ class LinkList<T>
 	Node headNode = new Node();
 	indexNode headIndexNode = new indexNode();
 	int size = 0;
+	int temparoryIndex = 0;
 
 
 	//EMPTY LIST METHOD
@@ -69,7 +71,9 @@ class LinkList<T>
 	{
 		//VARIABLES OF NODE	
 		Node addingNumberNewNode = new Node();
+		//int index = size;
 		addingNumberNewNode.number = number;
+		addingNumberNewNode.index = size;
 		addingNumberNewNode.nextNode = null;
 
 
@@ -82,12 +86,12 @@ class LinkList<T>
 			}
 			else
 			{
-				Node temporaryHeadNode = headNode;
-				while(temporaryHeadNode.nextNode != null)
+				Node temparoryIndexoraryHeadNode = headNode;
+				while(temparoryIndexoraryHeadNode.nextNode != null)
 				{
-					temporaryHeadNode = temporaryHeadNode.nextNode;
+					temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
 				}
-				temporaryHeadNode.nextNode = addingNumberNewNode;
+				temparoryIndexoraryHeadNode.nextNode = addingNumberNewNode;
 				size++;
 			}
 		}
@@ -103,13 +107,13 @@ class LinkList<T>
 	{
 		//VARIABLES
 		int isMatches = 0;
-		Node temporaryHeadNode = headNode;
+		Node temparoryIndexoraryHeadNode = headNode;
 
 
-		while(temporaryHeadNode.nextNode != null)
+		while(temparoryIndexoraryHeadNode.nextNode != null)
 		{
-			temporaryHeadNode = temporaryHeadNode.nextNode;
-			if(temporaryHeadNode.number == findNumber)
+			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
+			if(temparoryIndexoraryHeadNode.number == findNumber)
 			{
 				isMatches=1;
 			}			
@@ -132,14 +136,14 @@ class LinkList<T>
 	int search(int findNumber)
 	{
 		//VARIABLES
-		Node temporaryHeadNode = headNode;
+		Node temparoryIndexoraryHeadNode = headNode;
 		int isMatches = 0;
 
 
-		while(temporaryHeadNode.nextNode != null)
+		while(temparoryIndexoraryHeadNode.nextNode != null)
 		{
-			temporaryHeadNode = temporaryHeadNode.nextNode;
-			if(temporaryHeadNode.number == findNumber)
+			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
+			if(temparoryIndexoraryHeadNode.number == findNumber)
 			{
 				isMatches = 1;
 				System.out.println(findNumber+" Found in list");
@@ -168,25 +172,25 @@ class LinkList<T>
 			try
 			{	
 				//VARIABLES
-				Node previousTemporaryHeadNode = headNode;			
-				Node temporaryHeadNode = headNode.nextNode;
+				Node previoustemparoryIndexoraryHeadNode = headNode;			
+				Node temparoryIndexoraryHeadNode = headNode.nextNode;
 
 
-				while(temporaryHeadNode.number != removeNumber)
+				while(temparoryIndexoraryHeadNode.number != removeNumber)
 				{
 
-					previousTemporaryHeadNode = temporaryHeadNode;
-					temporaryHeadNode = temporaryHeadNode.nextNode;
+					previoustemparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode;
+					temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
 				}
 
 
-				System.out.println("Deleted word : "+temporaryHeadNode.number);
-				previousTemporaryHeadNode.nextNode = previousTemporaryHeadNode.nextNode.nextNode;
+				System.out.println("Deleted number : "+temparoryIndexoraryHeadNode.number);
+				previoustemparoryIndexoraryHeadNode.nextNode = previoustemparoryIndexoraryHeadNode.nextNode.nextNode;
 				size--;
 			}
 			catch(NullPointerException e) 
 			{
-				System.out.println("Word deletion operation completed.");
+				System.out.println("Number deletion operation completed.");
 			}
 		}
 	}
@@ -196,19 +200,22 @@ class LinkList<T>
 	public void showNumberList()
 	{
 		//VARIABLES
-		Node temporaryHeadNode = headNode;
+		Node temparoryIndexoraryHeadNode = headNode;
 
 
-		if(temporaryHeadNode.nextNode == null)
+		if(temparoryIndexoraryHeadNode.nextNode == null)
 		{
 			System.out.println("List is empty");
 		}
 
 
-		while(temporaryHeadNode.nextNode != null)
+		while(temparoryIndexoraryHeadNode.nextNode != null)
 		{
-			temporaryHeadNode = temporaryHeadNode.nextNode;
-			System.out.println(temporaryHeadNode.number);
+			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
+			System.out.println(temparoryIndexoraryHeadNode.number);
+
+			System.out.println("nnnnnnnn "+temparoryIndexoraryHeadNode.number);
+			System.out.println("iiiiiiii "+temparoryIndexoraryHeadNode.index);
 		}		
 	}
 
@@ -232,25 +239,25 @@ class LinkList<T>
 			System.out.println("List is not empty");
 		}
 	}
-
+	
 
 	//METHOD OF INDEX
 	int index(int findIndexOfNumber)
 	{
 		//VARIABLE
-		int temp = 0;
-		Node temporaryHeadNode = headNode.nextNode;
+		int temparoryIndex = 0;
+		Node temparoryIndexoraryHeadNode = headNode.nextNode;
 
 
-		while(temporaryHeadNode != null)
+		while(temparoryIndexoraryHeadNode != null)
 		{
-			if(findIndexOfNumber == temporaryHeadNode.number)
+			if(findIndexOfNumber == temparoryIndexoraryHeadNode.number)
 			{
-				return temp;
+				return temparoryIndex;
 			}	
-			System.out.println(temporaryHeadNode.number);
-			temporaryHeadNode = temporaryHeadNode.nextNode;
-			temp++;
+			System.out.println(temparoryIndexoraryHeadNode.number);
+			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
+			temparoryIndex++;
 		}
 		return -1;
 	}
@@ -269,21 +276,21 @@ class LinkList<T>
 	//METHOD OF SAVING IN SAME FILE
 	void saveIntoSameFile() throws IOException,FileNotFoundException
 	{
-		FileWriter fileWriterObject  = new FileWriter("C:\\Users\\King\\eclipse-workspace\\SnakeAndLadderProgram\\TempFile.txt",true);
+		FileWriter fileWriterObject  = new FileWriter("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempTestFile.txt",true);
 		BufferedWriter bufferWriterObject = new BufferedWriter(fileWriterObject);
 		int[] arrayForSortingNumbers = new int[size];
 
 
 		//VARIABLES
-		Node temporaryHeadNode2 = headNode;
+		Node temparoryIndexOfArrayHeadNode2 = headNode;
 		int arrayIndex = 0;
 
 
 		//ADDING LIST'S numberS INTO ARRAY
-		while(temporaryHeadNode2.nextNode != null)
+		while(temparoryIndexOfArrayHeadNode2.nextNode != null)
 		{				
-			temporaryHeadNode2 = temporaryHeadNode2.nextNode;
-			arrayForSortingNumbers[arrayIndex] = temporaryHeadNode2.number;				
+			temparoryIndexOfArrayHeadNode2 = temparoryIndexOfArrayHeadNode2.nextNode;
+			arrayForSortingNumbers[arrayIndex] = temparoryIndexOfArrayHeadNode2.number;				
 			arrayIndex++;
 		}
 
@@ -295,9 +302,9 @@ class LinkList<T>
 			{
 				if(arrayForSortingNumbers[arrayIndex2] > arrayForSortingNumbers[arrayIndex3])
 				{
-					int temparorySwapVairable = arrayForSortingNumbers[arrayIndex2];
+					int temparoryIndexValueSwapVairable = arrayForSortingNumbers[arrayIndex2];
 					arrayForSortingNumbers[arrayIndex2] = arrayForSortingNumbers[arrayIndex3];
-					arrayForSortingNumbers[arrayIndex3] = temparorySwapVairable;		
+					arrayForSortingNumbers[arrayIndex3] = temparoryIndexValueSwapVairable;		
 				}						
 			}
 		}
@@ -324,17 +331,17 @@ class LinkList<T>
 		Node newNodeNumber = new Node();
 		newNodeNumber.number = addingNumber;
 		newNodeNumber.nextNode = null;
-		Node temporaryHeadNode = headNode;
+		Node temparoryIndexoraryHeadNode = headNode;
 
 
 		for(int iter=0; iter<(position); iter++)
 		{
-			temporaryHeadNode = temporaryHeadNode.nextNode;
+			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
 		}
 
 
-		newNodeNumber.nextNode = temporaryHeadNode.nextNode;
-		temporaryHeadNode.nextNode = newNodeNumber;
+		newNodeNumber.nextNode = temparoryIndexoraryHeadNode.nextNode;
+		temparoryIndexoraryHeadNode.nextNode = newNodeNumber;
 		size++;
 	}
 
@@ -350,18 +357,18 @@ class LinkList<T>
 		else
 		{	
 			//VARIABLES
-			int temparoryIter = 0;
-			Node temparoryHead = headNode;
+			int temparoryIndexaroryIter = 0;
+			Node temparoryIndexaroryHead = headNode;
 
 
-			for(temparoryIter=0; temparoryIter<size-1; temparoryIter++)
+			for(temparoryIndexaroryIter=0; temparoryIndexaroryIter<size-1; temparoryIndexaroryIter++)
 			{
-				temparoryHead = temparoryHead.nextNode;
+				temparoryIndexaroryHead = temparoryIndexaroryHead.nextNode;
 			}
 
 
-			int returnNumber = temparoryHead.number;
-			temparoryHead.nextNode = null;
+			int returnNumber = temparoryIndexaroryHead.number;
+			temparoryIndexaroryHead.nextNode = null;
 			size--;
 			return returnNumber;
 		}
@@ -378,19 +385,19 @@ class LinkList<T>
 		else
 		{	
 			//VARIABLES
-			int temporaryIter = 0;
-			Node temporaryHead = headNode;
+			int temparoryIndexoraryIter = 0;
+			Node temparoryIndexoraryHead = headNode;
 
 
-			for(temporaryIter=0; temporaryIter<size; temporaryIter++)
+			for(temparoryIndexoraryIter=0; temparoryIndexoraryIter<size; temparoryIndexoraryIter++)
 			{
-				if(temporaryIter == position)
+				if(temparoryIndexoraryIter == position)
 				{
-					temporaryHead = temporaryHead.nextNode;
-					this.remove(temporaryHead.number);
-					return temporaryHead.number;
+					temparoryIndexoraryHead = temparoryIndexoraryHead.nextNode;
+					this.remove(temparoryIndexoraryHead.number);
+					return temparoryIndexoraryHead.number;
 				}
-				temporaryHead = temporaryHead.nextNode;					
+				temparoryIndexoraryHead = temparoryIndexoraryHead.nextNode;					
 			}
 			size--;
 		}
@@ -402,19 +409,23 @@ class LinkList<T>
 	void hashingIndex()
 	{
 		//VARIABLES
-		Node temporaryHeadNode = headNode;
+		int temparoryIndex = 0;
+		indexNode temparoryIndexoraryHeadNode = headIndexNode;
+		
 
-
-		if(temporaryHeadNode.nextNode == null)
+		if(temparoryIndexoraryHeadNode.nextNode == null)
 		{
 			System.out.println("List is empty");
 		}
 
 
-		while(temporaryHeadNode.nextNode != null)
+		while(temparoryIndex < 11)
 		{
-			temporaryHeadNode = temporaryHeadNode.nextNode;
-			System.out.println(temporaryHeadNode.number);
+			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
+			temparoryIndexoraryHeadNode.index = temparoryIndex;
+			System.out.println("nnnnnnnn "+temparoryIndexoraryHeadNode.number);
+			System.out.println("iiiiiiii "+temparoryIndexoraryHeadNode.index);
+			temparoryIndex++;
 		}		
 	}
 }
@@ -427,7 +438,7 @@ public class HashingFunction
 	public static void main(String[] args) throws IOException,NullPointerException,FileNotFoundException,IOException
 	{
 		LinkList<Integer> numberData = new LinkList<Integer>();
-		FileReader fileRead = new FileReader(new File("C:\\Users\\King\\eclipse-workspace\\SnakeAndLadderProgram\\TempFile.txt"));
+		FileReader fileRead = new FileReader(new File("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempTestFile.txt"));
 		BufferedReader bufferFileRead = new BufferedReader(fileRead);
 		String line = bufferFileRead.readLine();
 
@@ -438,9 +449,12 @@ public class HashingFunction
 		//ADDING FILE NUMBERS TO LINK LIST
 		while(line != null) 
 		{
-			int number = Integer.parseInt(line);
-			numberData.append(number);
-			line = bufferFileRead.readLine();
+			if(line != "")
+			{
+				int number = Integer.parseInt(line);
+				numberData.append(number);
+				line = bufferFileRead.readLine();
+			}
 		}
 
 
@@ -453,14 +467,16 @@ public class HashingFunction
 
 
 		//TAKING USER INPUT TO DELETE THAT NUMBER OR ADDING INTO LIST
-		int findNumber = numberData.takeInput();
+		//int findNumber = numberData.takeInput();
 
 
 		//CHECKING NUMBER IS PRESENT OR NOT THEN ADD INTO FILE OR DELETE THAT NUMBER
-		numberData.isNumberPresent(findNumber);
+		//numberData.isNumberPresent(findNumber);
 
 
 		//SAVING ORDERED LIST IN SAME FILE
-		numberData.saveIntoSameFile();
+		//numberData.saveIntoSameFile();
+		numberData.showNumberList();
+		//numberData.hashingIndex();
 	}
 }
