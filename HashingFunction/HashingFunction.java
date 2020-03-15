@@ -426,7 +426,7 @@ class LinkList<T>
 	}
 	
 	
-	//CREATING INDEX
+	//CREATING INDEX FOR HASHING
 	int hashingIndexGeneration(int makeIndexOfNumber)
 	{	return makeIndexOfNumber%11;	}
 }
