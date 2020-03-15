@@ -276,7 +276,7 @@ class LinkList<T>
 	//METHOD OF SAVING IN SAME FILE
 	void saveIntoSameFile() throws IOException,FileNotFoundException
 	{
-		FileWriter fileWriterObject  = new FileWriter("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempTestFile.txt",true);
+		FileWriter fileWriterObject  = new FileWriter("C:\\Users\\King\\eclipse-workspace\\SnakeAndLadderProgram\\TempFile.txt",true);
 		BufferedWriter bufferWriterObject = new BufferedWriter(fileWriterObject);
 		int[] arrayForSortingNumbers = new int[size];
 
@@ -415,9 +415,8 @@ class LinkList<T>
 
 		if(temparoryIndexoraryHeadNode.nextNode == null)
 		{
-			System.out.println("List is empty");
+			System.out.println("Hashing index is empty");
 		}
-
 
 		while(temparoryIndex < 11)
 		{
@@ -428,6 +427,10 @@ class LinkList<T>
 			temparoryIndex++;
 		}		
 	}
+	
+	
+	int hashingIndexGeneration(int makeIndexOfNumber)
+	{	return makeIndexOfNumber%11;	}
 }
 
 
@@ -438,7 +441,7 @@ public class HashingFunction
 	public static void main(String[] args) throws IOException,NullPointerException,FileNotFoundException,IOException
 	{
 		LinkList<Integer> numberData = new LinkList<Integer>();
-		FileReader fileRead = new FileReader(new File("//home//admin1//Documents//GamblerProblem//SnakeAndLadder//TempTestFile.txt"));
+		FileReader fileRead = new FileReader(new File("C:\\Users\\King\\eclipse-workspace\\SnakeAndLadderProgram\\TempFile.txt"));
 		BufferedReader bufferFileRead = new BufferedReader(fileRead);
 		String line = bufferFileRead.readLine();
 
@@ -452,6 +455,8 @@ public class HashingFunction
 			if(line != "")
 			{
 				int number = Integer.parseInt(line);
+				int hashingIndex = numberData.hashingIndexGeneration(number);
+				System.out.println("Hashing index : "+hashingIndex);
 				numberData.append(number);
 				line = bufferFileRead.readLine();
 			}
