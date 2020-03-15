@@ -444,14 +444,10 @@ public class HashingFunction
 		String line = bufferFileRead.readLine();
 		
 		
-<<<<<<< HEAD
-		numberData.createIndexes();
-=======
 		//CREATED INDEXES
 		numberData.createIndexes();
 		
 		
->>>>>>> 7.DevelopmentHashingFunction
 		//SHOWING EMPTY LIST
 		numberData.showNumberList();
 
