@@ -406,24 +406,21 @@ class LinkList<T>
 
 
 	//HASHING INDEX FROM 0 TO 10 
-	void hashingIndex()
+	void createIndexes()
 	{
 		//VARIABLES
 		int temparoryIndex = 0;
 		indexNode temparoryIndexoraryHeadNode = headIndexNode;
 		
-
-		if(temparoryIndexoraryHeadNode.nextNode == null)
-		{
-			System.out.println("Hashing index is empty");
-		}
-
+		
 		while(temparoryIndex < 11)
 		{
-			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
+			//temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
 			temparoryIndexoraryHeadNode.index = temparoryIndex;
-			System.out.println("nnnnnnnn "+temparoryIndexoraryHeadNode.number);
-			System.out.println("iiiiiiii "+temparoryIndexoraryHeadNode.index);
+			System.out.println("nnnnnnnn vvvv : "+temparoryIndexoraryHeadNode.number);
+			System.out.println("iiiiiiii vvvv : "+temparoryIndexoraryHeadNode.index);
+			temparoryIndexoraryHeadNode.nextNode = temparoryIndexoraryHeadNode;
+			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
 			temparoryIndex++;
 		}		
 	}
@@ -444,7 +441,9 @@ public class HashingFunction
 		FileReader fileRead = new FileReader(new File("C:\\Users\\King\\eclipse-workspace\\SnakeAndLadderProgram\\TempFile.txt"));
 		BufferedReader bufferFileRead = new BufferedReader(fileRead);
 		String line = bufferFileRead.readLine();
-
+		
+		
+		numberData.createIndexes();
 		//SHOWING EMPTY LIST
 		numberData.showNumberList();
 
@@ -457,7 +456,7 @@ public class HashingFunction
 				int number = Integer.parseInt(line);
 				int hashingIndex = numberData.hashingIndexGeneration(number);
 				System.out.println("Hashing index : "+hashingIndex);
-				numberData.append(number);
+				//numberData.insert(hashingIndex,number);
 				line = bufferFileRead.readLine();
 			}
 		}
@@ -482,6 +481,5 @@ public class HashingFunction
 		//SAVING ORDERED LIST IN SAME FILE
 		//numberData.saveIntoSameFile();
 		numberData.showNumberList();
-		//numberData.hashingIndex();
 	}
 }
