@@ -426,6 +426,7 @@ class LinkList<T>
 	}
 	
 	
+	//CREATING INDEX
 	int hashingIndexGeneration(int makeIndexOfNumber)
 	{	return makeIndexOfNumber%11;	}
 }
@@ -443,7 +444,14 @@ public class HashingFunction
 		String line = bufferFileRead.readLine();
 		
 		
+<<<<<<< HEAD
 		numberData.createIndexes();
+=======
+		//CREATED INDEXES
+		numberData.createIndexes();
+		
+		
+>>>>>>> 7.DevelopmentHashingFunction
 		//SHOWING EMPTY LIST
 		numberData.showNumberList();
 
@@ -470,16 +478,7 @@ public class HashingFunction
 		numberData.showNumberList();
 
 
-		//TAKING USER INPUT TO DELETE THAT NUMBER OR ADDING INTO LIST
-		//int findNumber = numberData.takeInput();
-
-
-		//CHECKING NUMBER IS PRESENT OR NOT THEN ADD INTO FILE OR DELETE THAT NUMBER
-		//numberData.isNumberPresent(findNumber);
-
-
 		//SAVING ORDERED LIST IN SAME FILE
-		//numberData.saveIntoSameFile();
 		numberData.showNumberList();
 	}
 }
