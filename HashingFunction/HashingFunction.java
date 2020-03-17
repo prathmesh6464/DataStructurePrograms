@@ -24,6 +24,7 @@ class indexNode
 	int index = -1;
 	int number;
 	indexNode nextNode = null;
+	Node nextIndex = null;
 } 
 
 
@@ -214,8 +215,8 @@ class LinkList<T>
 			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
 			System.out.println(temparoryIndexoraryHeadNode.number);
 
-			System.out.println("nnnnnnnn "+temparoryIndexoraryHeadNode.number);
-			System.out.println("iiiiiiii "+temparoryIndexoraryHeadNode.index);
+			System.out.println("nnnnnnnnumber showwwwww"+temparoryIndexoraryHeadNode.number);
+			System.out.println("iiiiiiiindexx showwwwww"+temparoryIndexoraryHeadNode.index);
 		}		
 	}
 
@@ -331,7 +332,7 @@ class LinkList<T>
 		Node newNodeNumber = new Node();
 		newNodeNumber.number = addingNumber;
 		newNodeNumber.nextNode = null;
-		Node temparoryIndexoraryHeadNode = headNode;
+		indexNode temparoryIndexoraryHeadNode = headIndexNode;
 
 
 		for(int iter=0; iter<(position); iter++)
@@ -340,8 +341,8 @@ class LinkList<T>
 		}
 
 
-		newNodeNumber.nextNode = temparoryIndexoraryHeadNode.nextNode;
-		temparoryIndexoraryHeadNode.nextNode = newNodeNumber;
+		//newNodeNumber.nextNode = temparoryIndexoraryHeadNode.nextNode;
+		temparoryIndexoraryHeadNode.nextIndex = newNodeNumber;
 		size++;
 	}
 
@@ -415,10 +416,9 @@ class LinkList<T>
 		
 		while(temparoryIndex < 11)
 		{
-			//temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
 			temparoryIndexoraryHeadNode.index = temparoryIndex;
-			System.out.println("nnnnnnnn vvvv : "+temparoryIndexoraryHeadNode.number);
-			System.out.println("iiiiiiii vvvv : "+temparoryIndexoraryHeadNode.index);
+			System.out.println("Number value : "+temparoryIndexoraryHeadNode.number);
+			System.out.println("Index value : "+temparoryIndexoraryHeadNode.index);
 			temparoryIndexoraryHeadNode.nextNode = temparoryIndexoraryHeadNode;
 			temparoryIndexoraryHeadNode = temparoryIndexoraryHeadNode.nextNode;
 			temparoryIndex++;
@@ -460,7 +460,7 @@ public class HashingFunction
 				int number = Integer.parseInt(line);
 				int hashingIndex = numberData.hashingIndexGeneration(number);
 				System.out.println("Hashing index : "+hashingIndex);
-				//numberData.insert(hashingIndex,number);
+				numberData.insert(hashingIndex,number);
 				line = bufferFileRead.readLine();
 			}
 		}
@@ -475,6 +475,7 @@ public class HashingFunction
 
 
 		//SAVING ORDERED LIST IN SAME FILE
+		numberData.saveIntoSameFile();
 		numberData.showNumberList();
 	}
 }
